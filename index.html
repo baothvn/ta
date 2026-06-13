@@ -58,29 +58,61 @@
             background-color: #e0f2fe;
             overflow-x: hidden;
             touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        /* Neo Brutalism Buttons */
+        .neo-btn {
+            background: white;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neo-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.15);
+        }
+        .neo-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.05);
+        }
+
+        /* Utility */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* Animated Background Elements */
         .bg-shapes { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: linear-gradient(135deg, #e0f2fe 0%, #fdf4ff 100%); }
-        .shape { position: absolute; filter: blur(40px); opacity: 0.6; animation: blob 15s infinite alternate; }
+        .shape { position: absolute; filter: blur(60px); opacity: 0.7; animation: blob 15s infinite alternate; }
         .shape-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background-color: #bae6fd; animation-delay: 0s; }
         .shape-2 { top: 40%; right: -20%; width: 40vw; height: 40vw; background-color: #fbcfe8; animation-delay: 2s; }
         .shape-3 { bottom: -20%; left: 20%; width: 60vw; height: 60vw; background-color: #bbf7d0; animation-delay: 4s; }
 
-        /* 3D Flip Card - Enhanced */
-        .flip-card { perspective: 1000px; cursor: pointer; height: 100%; min-height: 160px; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d; }
+        /* 3D Flip Card - Premium */
+        .flip-card { perspective: 1000px; cursor: pointer; height: 100%; min-height: 180px; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
         .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1); border: 4px solid white; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(5px); transition: box-shadow 0.3s; }
-        .flip-card:hover .flip-card-front { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1); transform: translateY(-5px); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+        .flip-card-front { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); border: 3px solid rgba(255,255,255,0.8); }
+        .flip-card:hover .flip-card-front { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15); transform: translateY(-8px) scale(1.02); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-color: white;}
         .flip-card-back { transform: rotateY(180deg); background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 4px dashed #fcd34d; }
 
-        /* Memory Game Cards */
+        /* Memory Game Cards - Premium */
         .mem-card { perspective: 1000px; cursor: pointer; aspect-ratio: 1/1; }
-        .mem-card-inner { width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; position: relative;}
+        .mem-card-inner { width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; position: relative;}
         .mem-card.flipped .mem-card-inner { transform: rotateY(180deg); }
-        .mem-front, .mem-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 1rem; display: flex; justify-content: center; align-items: center; font-size: 3rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .mem-front { background: linear-gradient(45deg, #3b82f6, #8b5cf6); border: 3px solid white; color: white; }
+        .mem-front, .mem-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 1rem; display: flex; justify-content: center; align-items: center; font-size: 3rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+        .mem-front { background: linear-gradient(135deg, #3b82f6, #8b5cf6); border: 3px solid white; color: white; transition: all 0.3s; }
+        .mem-card:hover .mem-front { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 20px rgba(0,0,0,0.15); }
         .mem-front::after { content: '?'; font-weight: 900; }
         .mem-back { background: white; transform: rotateY(180deg); border: 3px solid #e5e7eb; }
 
@@ -89,13 +121,26 @@
         .canvas-bg-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 15rem; opacity: 0.1; font-weight: 900; z-index: 0; pointer-events: none; user-select: none; color: #94a3b8;}
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* Hide Scrollbar for Horizontal Menus */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* V3 Printable Worksheets */
+        @media print {
+            body { background: white !important; }
+            header, #game_menu, #khu_vuc_danh_sach_chu_de, .bg-shapes, button:not(.print-keep), #pet_container { display: none !important; }
+            #khu_vuc_hoc_tap { display: block !important; }
+            .cat-sec.hidden { display: none !important; }
+            .cat-sec { display: block !important; }
+            #toolbar_v3 { display: none !important; }
+            .flip-card { page-break-inside: avoid; border: 2px solid #000; box-shadow: none; border-radius: 8px; margin-bottom: 20px; }
+            .flip-card-inner { transform: none !important; border: none; box-shadow: none; }
+            .flip-card-front { position: relative; border: none; background: white; color: black; -webkit-print-color-adjust: exact; box-shadow: none; display:block; padding: 20px;}
+            .flip-card-front .text-gray-300 { display: none; }
+            .flip-card-front .text-4xl, .flip-card-front .text-6xl, .flip-card-front .text-7xl, .flip-card-front .text-8xl { filter: grayscale(100%); opacity: 0.2; }
+            .flip-card-front::after { content: attr(data-word); display: block; margin-top: 10px; font-size: 2.5rem; font-weight: 900; color: #fff; -webkit-text-stroke: 1.5px black; text-align: center; font-family: 'Quicksand', sans-serif;}
+            .flip-card-back { display: none; }
+        }
     </style>
 </head>
 <body class="text-gray-800 flex flex-col relative min-h-screen">
@@ -116,63 +161,46 @@
     <audio id="audio_level_up"><source src="https://assets.mixkit.co/sfx/preview/mixkit-game-level-completed-2059.mp3" type="audio/mpeg"></audio>
 
     <!-- Header VIP -->
-    <header class="bg-white/70 backdrop-blur-lg shadow-sm sticky top-0 z-50 border-b-2 border-white/50">
+    <header class="glass-panel sticky top-0 z-50 mb-6">
         <div class="max-w-7xl mx-auto px-2 py-2 md:py-3">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-3 w-full">
-                <!-- Avatar & Title -->
-                <div class="flex items-center gap-3 bg-white px-4 py-1.5 rounded-full shadow-neo cursor-pointer hover:scale-105 transition" onclick="ham_hien_thi_thong_tin_cap_do()">
+            <div class="flex justify-between items-center w-full gap-1">
+                <!-- Avatar (Title hidden on mobile) -->
+                <div class="flex items-center gap-2 bg-white px-2 md:px-4 py-1.5 rounded-full shadow-neo cursor-pointer hover:scale-105 transition shrink-0" onclick="ham_hien_thi_thong_tin_cap_do()">
                     <div class="relative">
-                        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Star&backgroundColor=f59e0b" alt="Mascot" class="w-12 h-12 rounded-full border-2 border-white bg-yellow-400">
-                        <div class="absolute -bottom-1 -right-1 bg-red-500 text-white text-[0.65rem] font-bold px-1.5 py-0.5 rounded-full border border-white" id="hien_thi_level">Lv.1</div>
+                        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Star&backgroundColor=f59e0b" alt="Mascot" class="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white bg-yellow-400">
+                        <div class="absolute -bottom-1 -right-1 bg-red-500 text-white text-[0.6rem] md:text-[0.65rem] font-bold px-1.5 py-0.5 rounded-full border border-white" id="hien_thi_level">Lv.1</div>
                     </div>
-                    <div>
+                    <div class="hidden md:block">
                         <h1 class="text-xl md:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 leading-none">VŨ TRỤ TỪ VỰNG</h1>
                         <p class="text-[0.65rem] font-bold text-gray-400 mt-1 uppercase tracking-widest">Premium Edition</p>
                     </div>
                 </div>
                 
                 <!-- Stats: Streak & Coins & Utilities -->
-                <div class="flex items-center gap-2 md:gap-3 flex-wrap justify-center">
-                    <div class="bg-orange-50 text-orange-600 px-3 py-1.5 md:px-4 md:py-2 rounded-2xl font-black flex items-center gap-1.5 shadow-sm border border-orange-200" title="Chuỗi ngày học liên tiếp">
-                        <i class="fa-solid fa-fire text-orange-500 drop-shadow-md"></i> <span id="hien_thi_streak">1</span>
+                <div class="flex items-center gap-1 md:gap-3 shrink-0">
+                    <div class="bg-orange-50 text-orange-600 px-2 py-1 md:px-4 md:py-2 rounded-xl md:rounded-2xl font-black flex items-center gap-1 shadow-sm border border-orange-200 text-xs md:text-base" title="Chuỗi ngày học liên tiếp">
+                        <i class="fa-solid fa-fire text-orange-500"></i> <span id="hien_thi_streak">1</span>
                     </div>
-                    <div class="bg-yellow-50 text-yellow-600 px-3 py-1.5 md:px-4 md:py-2 rounded-2xl font-black flex items-center gap-1.5 shadow-sm border border-yellow-200" title="Xu vàng">
-                        <i class="fa-solid fa-coins text-yellow-500 drop-shadow-md"></i> <span id="hien_thi_sao">0</span>
+                    <div class="bg-yellow-50 text-yellow-600 px-2 py-1 md:px-4 md:py-2 rounded-xl md:rounded-2xl font-black flex items-center gap-1 shadow-sm border border-yellow-200 text-xs md:text-base" title="Xu vàng">
+                        <i class="fa-solid fa-coins text-yellow-500"></i> <span id="hien_thi_sao">0</span>
                     </div>
-                    <button id="btn_music" onclick="ham_toggle_nhac_nen()" class="w-10 h-10 rounded-full bg-white shadow-neo text-gray-400 hover:text-pink-500 transition flex items-center justify-center text-lg ml-2">
+                    <button id="btn_music" onclick="ham_toggle_nhac_nen()" class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white shadow-neo text-gray-400 hover:text-pink-500 transition flex items-center justify-center text-sm md:text-lg ml-1">
                         <i class="fa-solid fa-music-slash"></i>
+                    </button>
+                    <button id="btn_lang" onclick="ham_toggle_ngon_ngu()" class="w-10 h-8 md:w-14 md:h-10 rounded-xl bg-white shadow-neo text-blue-600 font-black hover:text-purple-600 transition flex items-center justify-center text-sm md:text-base ml-1 border-2 border-blue-100">
+                        EN
                     </button>
                 </div>
             </div>
             
-            <!-- Super Menu -->
-            <div class="mt-3 pb-2" id="nav_menu">
-                <nav class="flex flex-wrap justify-center gap-2 px-2">
-                    <button onclick="ham_chuyen_tab('alphabet')" class="nav-btn bg-white shadow-sm px-4 py-2 text-purple-600 font-bold rounded-2xl hover:bg-purple-50 border-2 border-transparent">ABC</button>
-                    <button onclick="ham_chuyen_tab('numbers')" class="nav-btn bg-white shadow-sm px-4 py-2 text-orange-600 font-bold rounded-2xl hover:bg-orange-50 border-2 border-transparent">123</button>
-                    <button onclick="ham_chuyen_tab('family')" class="nav-btn bg-white shadow-sm px-4 py-2 text-rose-600 font-bold rounded-2xl hover:bg-rose-50 border-2 border-transparent"><i class="fa-solid fa-people-roof"></i> Gia đình</button>
-                    <button onclick="ham_chuyen_tab('animals')" class="nav-btn active ring-4 ring-blue-200 border-blue-400 bg-blue-50 px-4 py-2 text-blue-600 font-bold rounded-2xl shadow-sm"><i class="fa-solid fa-cat"></i> Động vật</button>
-                    <button onclick="ham_chuyen_tab('fruits')" class="nav-btn bg-white shadow-sm px-4 py-2 text-red-600 font-bold rounded-2xl hover:bg-red-50 border-2 border-transparent"><i class="fa-solid fa-apple-whole"></i> Trái cây</button>
-                    <button onclick="ham_chuyen_tab('colors')" class="nav-btn bg-white shadow-sm px-4 py-2 text-pink-600 font-bold rounded-2xl hover:bg-pink-50 border-2 border-transparent"><i class="fa-solid fa-palette"></i> Màu sắc</button>
-                    <button onclick="ham_chuyen_tab('vehicles')" class="nav-btn bg-white shadow-sm px-4 py-2 text-cyan-600 font-bold rounded-2xl hover:bg-cyan-50 border-2 border-transparent"><i class="fa-solid fa-car"></i> Xe cộ</button>
-                    <button onclick="ham_chuyen_tab('clothes')" class="nav-btn bg-white shadow-sm px-4 py-2 text-indigo-500 font-bold rounded-2xl hover:bg-indigo-50 border-2 border-transparent"><i class="fa-solid fa-shirt"></i> Quần áo</button>
-                    <button onclick="ham_chuyen_tab('body')" class="nav-btn bg-white shadow-sm px-4 py-2 text-fuchsia-600 font-bold rounded-2xl hover:bg-fuchsia-50 border-2 border-transparent"><i class="fa-solid fa-hand"></i> Cơ thể</button>
-                    <button onclick="ham_chuyen_tab('food')" class="nav-btn bg-white shadow-sm px-4 py-2 text-amber-600 font-bold rounded-2xl hover:bg-amber-50 border-2 border-transparent"><i class="fa-solid fa-burger"></i> Đồ ăn</button>
-                    <button onclick="ham_chuyen_tab('jobs')" class="nav-btn bg-white shadow-sm px-4 py-2 text-slate-600 font-bold rounded-2xl hover:bg-slate-50 border-2 border-transparent"><i class="fa-solid fa-user-doctor"></i> Nghề nghiệp</button>
-                    <button onclick="ham_chuyen_tab('house')" class="nav-btn bg-white shadow-sm px-4 py-2 text-teal-600 font-bold rounded-2xl hover:bg-teal-50 border-2 border-transparent"><i class="fa-solid fa-house"></i> Trong nhà</button>
-                    <button onclick="ham_chuyen_tab('school')" class="nav-btn bg-white shadow-sm px-4 py-2 text-lime-600 font-bold rounded-2xl hover:bg-lime-50 border-2 border-transparent"><i class="fa-solid fa-school"></i> Trường học</button>
-                    <button onclick="ham_chuyen_tab('sports')" class="nav-btn bg-white shadow-sm px-4 py-2 text-orange-500 font-bold rounded-2xl hover:bg-orange-50 border-2 border-transparent"><i class="fa-solid fa-volleyball"></i> Thể thao</button>
-                    <button onclick="ham_chuyen_tab('vegetables')" class="nav-btn bg-white shadow-sm px-4 py-2 text-green-600 font-bold rounded-2xl hover:bg-green-50 border-2 border-transparent"><i class="fa-solid fa-carrot"></i> Rau củ</button>
-                    <button onclick="ham_chuyen_tab('space')" class="nav-btn bg-white shadow-sm px-4 py-2 text-indigo-700 font-bold rounded-2xl hover:bg-indigo-50 border-2 border-transparent"><i class="fa-solid fa-rocket"></i> Vũ trụ</button>
-                    <button onclick="ham_chuyen_tab('weather')" class="nav-btn bg-white shadow-sm px-4 py-2 text-sky-500 font-bold rounded-2xl hover:bg-sky-50 border-2 border-transparent"><i class="fa-solid fa-cloud-sun"></i> Thời tiết</button>
-                    <button onclick="ham_chuyen_tab('flags')" class="nav-btn bg-white shadow-sm px-4 py-2 text-emerald-600 font-bold rounded-2xl hover:bg-emerald-50 border-2 border-transparent"><i class="fa-solid fa-flag"></i> Quốc kỳ</button>
-                    
-                    <div class="w-px h-8 bg-gray-300 mx-1 my-auto"></div>
-                    
-                    <button onclick="ham_chuyen_tab('games')" class="nav-btn bg-gradient-to-r from-green-400 to-emerald-500 text-white px-5 py-2 font-black rounded-2xl shadow-[0_4px_0_0_#047857] hover:translate-y-1 hover:shadow-none transition-all flex items-center animate-pulse-fast">
-                        <i class="fa-solid fa-gamepad mr-2 text-xl"></i> CHƠI GAME
-                    </button>
-                </nav>
+                <!-- Super Menu (App Style) -->
+            <div class="mt-2 md:mt-3 flex justify-between items-center w-full" id="nav_menu">
+                <button onclick="ham_ve_trang_chu()" class="neo-btn px-4 py-2.5 md:px-5 md:py-3 text-blue-600 font-black rounded-xl md:rounded-2xl border-2 border-blue-200 hover:bg-blue-50 flex items-center gap-2 text-sm md:text-lg w-[48%] justify-center">
+                    <i class="fa-solid fa-list-ul"></i> <span id="hien_thi_ten_chu_de">MENU</span>
+                </button>
+                <button onclick="ham_chon_game()" class="neo-btn bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-2.5 md:px-6 md:py-3 font-black rounded-xl md:rounded-2xl border-none shadow-[4px_4px_0_0_#047857] hover:shadow-[6px_6px_0_0_#047857] active:shadow-[2px_2px_0_0_#047857] flex items-center justify-center animate-pulse-fast text-sm md:text-lg w-[48%]">
+                    <i class="fa-solid fa-gamepad mr-2"></i> CHƠI GAME
+                </button>
             </div>
         </div>
     </header>
@@ -180,11 +208,55 @@
     <!-- Main Content Area -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-6 w-full relative z-10 mb-20">
         
+        <!-- HOME SCREEN: DANH SÁCH CHỦ ĐỀ -->
+        <div id="khu_vuc_danh_sach_chu_de" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+            <button onclick="ham_chon_chu_de('alphabet')" class="bg-white text-purple-600 border-[3px] border-purple-100 px-4 py-6 font-black rounded-[2rem] hover:bg-purple-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-font text-4xl mb-1 text-purple-400"></i>ABC</button>
+            <button onclick="ham_chon_chu_de('numbers')" class="bg-white text-orange-600 border-[3px] border-orange-100 px-4 py-6 font-black rounded-[2rem] hover:bg-orange-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-hashtag text-4xl mb-1 text-orange-400"></i>123</button>
+            <button onclick="ham_chon_chu_de('family')" class="bg-white text-rose-600 border-[3px] border-rose-100 px-4 py-6 font-black rounded-[2rem] hover:bg-rose-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-people-roof text-4xl mb-1 text-rose-400"></i>Gia đình</button>
+            <button onclick="ham_chon_chu_de('shapes')" class="bg-white text-fuchsia-500 border-[3px] border-fuchsia-100 px-4 py-6 font-black rounded-[2rem] hover:bg-fuchsia-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-shapes text-4xl mb-1 text-fuchsia-400"></i>Hình khối</button>
+            <button onclick="ham_chon_chu_de('toys')" class="bg-white text-pink-500 border-[3px] border-pink-100 px-4 py-6 font-black rounded-[2rem] hover:bg-pink-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-gamepad text-4xl mb-1 text-pink-400"></i>Đồ chơi</button>
+            <button onclick="ham_chon_chu_de('emotions')" class="bg-white text-yellow-500 border-[3px] border-yellow-100 px-4 py-6 font-black rounded-[2rem] hover:bg-yellow-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-face-smile text-4xl mb-1 text-yellow-400"></i>Cảm xúc</button>
+            <button onclick="ham_chon_chu_de('actions')" class="bg-white text-cyan-500 border-[3px] border-cyan-100 px-4 py-6 font-black rounded-[2rem] hover:bg-cyan-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-person-running text-4xl mb-1 text-cyan-400"></i>Hành động</button>
+            <button onclick="ham_chon_chu_de('animals')" class="bg-white text-blue-600 border-[3px] border-blue-100 px-4 py-6 font-black rounded-[2rem] hover:bg-blue-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-cat text-4xl mb-1 text-blue-400"></i>Động vật</button>
+            <button onclick="ham_chon_chu_de('fruits')" class="bg-white text-red-600 border-[3px] border-red-100 px-4 py-6 font-black rounded-[2rem] hover:bg-red-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-apple-whole text-4xl mb-1 text-red-400"></i>Trái cây</button>
+            <button onclick="ham_chon_chu_de('colors')" class="bg-white text-pink-600 border-[3px] border-pink-100 px-4 py-6 font-black rounded-[2rem] hover:bg-pink-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-palette text-4xl mb-1 text-pink-400"></i>Màu sắc</button>
+            <button onclick="ham_chon_chu_de('vehicles')" class="bg-white text-cyan-600 border-[3px] border-cyan-100 px-4 py-6 font-black rounded-[2rem] hover:bg-cyan-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-car text-4xl mb-1 text-cyan-400"></i>Xe cộ</button>
+            <button onclick="ham_chon_chu_de('clothes')" class="bg-white text-indigo-500 border-[3px] border-indigo-100 px-4 py-6 font-black rounded-[2rem] hover:bg-indigo-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-shirt text-4xl mb-1 text-indigo-400"></i>Quần áo</button>
+            <button onclick="ham_chon_chu_de('body')" class="bg-white text-fuchsia-600 border-[3px] border-fuchsia-100 px-4 py-6 font-black rounded-[2rem] hover:bg-fuchsia-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-hand text-4xl mb-1 text-fuchsia-400"></i>Cơ thể</button>
+            <button onclick="ham_chon_chu_de('food')" class="bg-white text-amber-600 border-[3px] border-amber-100 px-4 py-6 font-black rounded-[2rem] hover:bg-amber-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-burger text-4xl mb-1 text-amber-400"></i>Đồ ăn</button>
+            <button onclick="ham_chon_chu_de('jobs')" class="bg-white text-slate-600 border-[3px] border-slate-100 px-4 py-6 font-black rounded-[2rem] hover:bg-slate-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-user-doctor text-4xl mb-1 text-slate-400"></i>Nghề nghiệp</button>
+            <button onclick="ham_chon_chu_de('house')" class="bg-white text-teal-600 border-[3px] border-teal-100 px-4 py-6 font-black rounded-[2rem] hover:bg-teal-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-house text-4xl mb-1 text-teal-400"></i>Trong nhà</button>
+            <button onclick="ham_chon_chu_de('school')" class="bg-white text-lime-600 border-[3px] border-lime-100 px-4 py-6 font-black rounded-[2rem] hover:bg-lime-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-school text-4xl mb-1 text-lime-400"></i>Trường học</button>
+            <button onclick="ham_chon_chu_de('sports')" class="bg-white text-orange-500 border-[3px] border-orange-100 px-4 py-6 font-black rounded-[2rem] hover:bg-orange-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-volleyball text-4xl mb-1 text-orange-400"></i>Thể thao</button>
+            <button onclick="ham_chon_chu_de('vegetables')" class="bg-white text-green-600 border-[3px] border-green-100 px-4 py-6 font-black rounded-[2rem] hover:bg-green-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-carrot text-4xl mb-1 text-green-400"></i>Rau củ</button>
+            <button onclick="ham_chon_chu_de('space')" class="bg-white text-indigo-700 border-[3px] border-indigo-100 px-4 py-6 font-black rounded-[2rem] hover:bg-indigo-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-rocket text-4xl mb-1 text-indigo-400"></i>Vũ trụ</button>
+            <button onclick="ham_chon_chu_de('weather')" class="bg-white text-sky-500 border-[3px] border-sky-100 px-4 py-6 font-black rounded-[2rem] hover:bg-sky-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-cloud-sun text-4xl mb-1 text-sky-400"></i>Thời tiết</button>
+            <button onclick="ham_chon_chu_de('flags')" class="bg-white text-emerald-600 border-[3px] border-emerald-100 px-4 py-6 font-black rounded-[2rem] hover:bg-emerald-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-flag text-4xl mb-1 text-emerald-400"></i>Quốc kỳ</button>
+            <button onclick="ham_chon_chu_de('nature')" class="bg-white text-green-700 border-[3px] border-green-100 px-4 py-6 font-black rounded-[2rem] hover:bg-green-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-leaf text-4xl mb-1 text-green-400"></i>Thiên nhiên</button>
+            <button onclick="ham_chon_chu_de('insects')" class="bg-white text-lime-700 border-[3px] border-lime-100 px-4 py-6 font-black rounded-[2rem] hover:bg-lime-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-bug text-4xl mb-1 text-lime-400"></i>Côn trùng</button>
+            <button onclick="ham_chon_chu_de('music')" class="bg-white text-indigo-600 border-[3px] border-indigo-100 px-4 py-6 font-black rounded-[2rem] hover:bg-indigo-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-guitar text-4xl mb-1 text-indigo-400"></i>Nhạc cụ</button>
+            <button onclick="ham_chon_chu_de('places')" class="bg-white text-cyan-700 border-[3px] border-cyan-100 px-4 py-6 font-black rounded-[2rem] hover:bg-cyan-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-map-location-dot text-4xl mb-1 text-cyan-400"></i>Nơi chốn</button>
+            <button onclick="ham_chon_chu_de('hobbies')" class="bg-white text-pink-500 border-[3px] border-pink-100 px-4 py-6 font-black rounded-[2rem] hover:bg-pink-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-camera-retro text-4xl mb-1 text-pink-400"></i>Sở thích</button>
+            <button onclick="ham_chon_chu_de('tech')" class="bg-white text-slate-700 border-[3px] border-slate-100 px-4 py-6 font-black rounded-[2rem] hover:bg-slate-50 active:scale-95 transition text-lg md:text-xl flex flex-col items-center justify-center gap-2 shadow-sm"><i class="fa-solid fa-laptop text-4xl mb-1 text-slate-400"></i>Công nghệ</button>
+        </div>
+
         <!-- LEARNING ZONES -->
-        <div id="khu_vuc_hoc_tap">
+        <div id="khu_vuc_hoc_tap" class="hidden">
+            <!-- Toolbar V3 -->
+            <div id="toolbar_v3" class="flex justify-between items-center bg-white/60 backdrop-blur-md rounded-2xl p-2 md:p-4 mb-6 shadow-sm border border-white/40">
+                <div class="font-black text-lg md:text-xl text-blue-600 uppercase flex items-center gap-2" id="toolbar_title"><i class="fa-solid fa-book-open"></i> Đang học</div>
+                <div class="flex gap-2">
+                    <button onclick="ham_auto_play()" class="bg-purple-100 text-purple-600 hover:bg-purple-200 px-3 py-2 md:px-4 md:py-2 rounded-xl font-bold transition flex items-center gap-2 shadow-neo active:scale-95 text-sm md:text-base" id="btn_autoplay"><i class="fa-solid fa-play"></i> Chạy tự động</button>
+                    <button onclick="window.print()" class="bg-gray-100 text-gray-600 hover:bg-gray-200 px-3 py-2 md:px-4 md:py-2 rounded-xl font-bold transition flex items-center gap-2 shadow-neo active:scale-95 text-sm md:text-base hidden sm:flex"><i class="fa-solid fa-print"></i> In Tập Tô</button>
+                </div>
+            </div>
             <section id="alphabet" class="cat-sec hidden"><div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-9 gap-3" id="k_alpha"></div></section>
             <section id="numbers" class="cat-sec hidden"><div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3" id="k_num"></div></section>
             <section id="family" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_fam"></div></section>
+            <section id="shapes" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_sha"></div></section>
+            <section id="toys" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_toy"></div></section>
+            <section id="emotions" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_emo"></div></section>
+            <section id="actions" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_act"></div></section>
             <section id="animals" class="cat-sec"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_ani"></div></section>
             <section id="fruits" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_fru"></div></section>
             <section id="colors" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_col"></div></section>
@@ -200,13 +272,19 @@
             <section id="space" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_spc"></div></section>
             <section id="weather" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_wea"></div></section>
             <section id="flags" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-5" id="k_fla"></div></section>
+            <section id="nature" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_nat"></div></section>
+            <section id="insects" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_ins"></div></section>
+            <section id="music" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_mus"></div></section>
+            <section id="places" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_pla"></div></section>
+            <section id="hobbies" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_hob"></div></section>
+            <section id="tech" class="cat-sec hidden"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="k_tec"></div></section>
         </div>
 
         <!-- GAMING ZONE -->
         <section id="games" class="cat-sec hidden max-w-5xl mx-auto">
             
             <!-- Game Menu Dashboard -->
-            <div id="game_menu" class="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-glass border border-white">
+            <div id="game_menu" class="glass-panel rounded-[2rem] p-6">
                 <div class="text-center mb-8">
                     <h2 class="text-4xl md:text-5xl font-black text-k-green drop-shadow-sm uppercase">Siêu Thị Trò Chơi</h2>
                     <p class="text-lg text-gray-500 font-bold mt-2">Chọn một trò chơi để kiếm thật nhiều sao nhé!</p>
@@ -272,11 +350,27 @@
                         <p class="text-cyan-600 font-semibold text-xs mt-1 z-10">Viết & vẽ tự do.</p>
                         <i class="fa-solid fa-palette absolute -right-4 -bottom-4 text-6xl opacity-10 text-cyan-500"></i>
                     </button>
+
+                    <!-- G9: Mystery Box -->
+                    <button onclick="ham_khoi_tao_game('hop_bi_mat')" class="bg-fuchsia-50 border-4 border-fuchsia-200 rounded-3xl p-6 hover:bg-fuchsia-100 hover:-translate-y-2 transition-all flex flex-col items-center group shadow-sm text-center relative">
+                        <div class="w-16 h-16 bg-fuchsia-500 text-white rounded-full flex items-center justify-center text-3xl mb-3 group-hover:scale-110 transition shadow-neo"><i class="fa-solid fa-box-open"></i></div>
+                        <h3 class="text-xl font-black text-fuchsia-700">Hộp Bí Mật</h3>
+                        <p class="text-fuchsia-500 font-semibold text-xs mt-1">Lật mở ô chữ.</p>
+                        <span class="absolute top-2 right-2 bg-fuchsia-500 text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full animate-bounce">MỚI</span>
+                    </button>
+
+                    <!-- G10: Sorting Game -->
+                    <button onclick="ham_khoi_tao_game('phan_loai')" class="bg-lime-50 border-4 border-lime-200 rounded-3xl p-6 hover:bg-lime-100 hover:-translate-y-2 transition-all flex flex-col items-center group shadow-sm text-center relative">
+                        <div class="w-16 h-16 bg-lime-500 text-white rounded-full flex items-center justify-center text-3xl mb-3 group-hover:scale-110 transition shadow-neo"><i class="fa-solid fa-basket-shopping"></i></div>
+                        <h3 class="text-xl font-black text-lime-700">Phân Loại</h3>
+                        <p class="text-lime-500 font-semibold text-xs mt-1">Kéo thả vào rổ.</p>
+                        <span class="absolute top-2 right-2 bg-lime-500 text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full animate-bounce">MỚI</span>
+                    </button>
                 </div>
             </div>
 
             <!-- Game Play Arena -->
-            <div id="game_play_area" class="hidden bg-white/90 backdrop-blur-xl rounded-[2rem] p-4 md:p-6 shadow-glass border-4 border-white relative min-h-[500px] flex flex-col">
+            <div id="game_play_area" class="hidden glass-panel rounded-[2rem] p-4 md:p-6 relative min-h-[500px] flex flex-col">
                 
                 <!-- Game Header -->
                 <div class="flex justify-between items-center mb-4 pb-4 border-b-2 border-gray-100/50 z-20">
@@ -313,6 +407,27 @@
         </div>
     </div>
 
+    <!-- Trophy Room Modal -->
+    <div id="modal_trophy_room" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-md">
+        <div class="bg-white/90 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 max-w-2xl w-full mx-4 text-center relative shadow-2xl border border-white/40 transform scale-0 transition-transform duration-500" id="modal_trophy_content">
+            <button onclick="ham_dong_phong_cup()" class="absolute -top-4 -right-4 bg-red-500 text-white w-12 h-12 rounded-full font-black text-xl shadow-neo border-2 border-white hover:bg-red-600 z-10"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="text-4xl md:text-5xl font-black text-yellow-600 mb-2 drop-shadow-sm uppercase">Phòng Cúp Vinh Danh</h2>
+            <p class="text-lg font-bold text-gray-500 mb-6">Học thật giỏi để thu thập thật nhiều cúp nhé!</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="danh_sach_cup">
+                <!-- Sẽ render động bằng JS -->
+            </div>
+            
+            <div class="mt-8 bg-blue-50 border-4 border-blue-200 rounded-2xl p-4 flex items-center justify-center gap-4">
+                <div class="text-5xl animate-bounce">⭐</div>
+                <div class="text-left">
+                    <p class="text-sm font-bold text-blue-500">Tổng Sao Hiện Tại</p>
+                    <p class="text-4xl font-black text-blue-700" id="trophy_tong_sao">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- CƠ SỞ DỮ LIỆU TỪ VỰNG KHỔNG LỒ ---
         const $du_lieu = {
@@ -328,96 +443,163 @@
                 { id: 'tiger', en: 'Tiger', vi: 'Con Hổ', emj: '🐯' }, { id: 'lion', en: 'Lion', vi: 'Sư Tử', emj: '🦁' },
                 { id: 'cow', en: 'Cow', vi: 'Con Bò', emj: '🐮' }, { id: 'pig', en: 'Pig', vi: 'Con Heo', emj: '🐷' },
                 { id: 'monkey', en: 'Monkey', vi: 'Con Khỉ', emj: '🐒' }, { id: 'elephant', en: 'Elephant', vi: 'Con Voi', emj: '🐘' },
-                { id: 'dinosaur', en: 'Dinosaur', vi: 'Khủng Long', emj: '🦖' }, { id: 'penguin', en: 'Penguin', vi: 'Chim Cánh Cụt', emj: '🐧' }
+                { id: 'dinosaur', en: 'Dinosaur', vi: 'Khủng Long', emj: '🦖' }, { id: 'penguin', en: 'Penguin', vi: 'Chim Cánh Cụt', emj: '🐧' },
+                { id: 'horse', en: 'Horse', vi: 'Con Ngựa', emj: '🐴' }, { id: 'sheep', en: 'Sheep', vi: 'Con Cừu', emj: '🐑' },
+                { id: 'goat', en: 'Goat', vi: 'Con Dê', emj: '🐐' }, { id: 'chicken', en: 'Chicken', vi: 'Con Gà', emj: '🐔' },
+                { id: 'duck', en: 'Duck', vi: 'Con Vịt', emj: '🦆' }, { id: 'frog', en: 'Frog', vi: 'Con Ếch', emj: '🐸' },
+                { id: 'snake', en: 'Snake', vi: 'Con Rắn', emj: '🐍' }, { id: 'turtle', en: 'Turtle', vi: 'Con Rùa', emj: '🐢' },
+                { id: 'whale', en: 'Whale', vi: 'Cá Voi', emj: '🐳' }, { id: 'dolphin', en: 'Dolphin', vi: 'Cá Heo', emj: '🐬' },
+                { id: 'fish', en: 'Fish', vi: 'Con Cá', emj: '🐟' }, { id: 'octopus', en: 'Octopus', vi: 'Bạch Tuộc', emj: '🐙' },
+                { id: 'snail', en: 'Snail', vi: 'Ốc Sên', emj: '🐌' }, { id: 'bug', en: 'Bug', vi: 'Con Bọ', emj: '🐛' },
+                { id: 'ant', en: 'Ant', vi: 'Con Kiến', emj: '🐜' }, { id: 'bee', en: 'Bee', vi: 'Con Ong', emj: '🐝' },
+                { id: 'spider', en: 'Spider', vi: 'Con Nhện', emj: '🕷️' }, { id: 'crab', en: 'Crab', vi: 'Con Cua', emj: '🦀' },
+                { id: 'hippo', en: 'Hippo', vi: 'Hà Mã', emj: '🦛' }, { id: 'rhino', en: 'Rhino', vi: 'Tê Giác', emj: '🦏' },
+                { id: 'giraffe', en: 'Giraffe', vi: 'Hươu Cao Cổ', emj: '🦒' }, { id: 'kangaroo', en: 'Kangaroo', vi: 'Kangaroo', emj: '🦘' },
+                { id: 'camel', en: 'Camel', vi: 'Lạc Đà', emj: '🐫' }, { id: 'zebra', en: 'Zebra', vi: 'Ngựa Vằn', emj: '🦓' },
+                { id: 'leopard', en: 'Leopard', vi: 'Báo Đốm', emj: '🐆' }, { id: 'deer', en: 'Deer', vi: 'Con Hươu', emj: '🦌' },
+                { id: 'bat', en: 'Bat', vi: 'Con Dơi', emj: '🦇' }, { id: 'eagle', en: 'Eagle', vi: 'Đại Bàng', emj: '🦅' },
+                { id: 'peacock', en: 'Peacock', vi: 'Con Công', emj: '🦚' }, { id: 'parrot', en: 'Parrot', vi: 'Con Vẹt', emj: '🦜' },
+                { id: 'swan', en: 'Swan', vi: 'Thiên Nga', emj: '🦢' }, { id: 'flamingo', en: 'Flamingo', vi: 'Hồng Hạc', emj: '🦩' },
+                { id: 'seal', en: 'Seal', vi: 'Hải Cẩu', emj: '🦭' }, { id: 'shark', en: 'Shark', vi: 'Cá Mập', emj: '🦈' }
             ],
             fruits: [
                 { id: 'apple', en: 'Apple', vi: 'Quả Táo', emj: '🍎' }, { id: 'banana', en: 'Banana', vi: 'Quả Chuối', emj: '🍌' },
                 { id: 'orange', en: 'Orange', vi: 'Quả Cam', emj: '🍊' }, { id: 'grape', en: 'Grape', vi: 'Quả Nho', emj: '🍇' },
                 { id: 'strawberry', en: 'Strawberry', vi: 'Dâu Tây', emj: '🍓' }, { id: 'watermelon', en: 'Watermelon', vi: 'Dưa Hấu', emj: '🍉' },
                 { id: 'mango', en: 'Mango', vi: 'Quả Xoài', emj: '🥭' }, { id: 'pineapple', en: 'Pineapple', vi: 'Quả Dứa', emj: '🍍' },
-                { id: 'corn', en: 'Corn', vi: 'Bắp / Ngô', emj: '🌽' }, { id: 'carrot', en: 'Carrot', vi: 'Cà Rốt', emj: '🥕' }
+                { id: 'lemon', en: 'Lemon', vi: 'Quả Chanh', emj: '🍋' }, { id: 'peach', en: 'Peach', vi: 'Quả Đào', emj: '🍑' },
+                { id: 'cherry', en: 'Cherry', vi: 'Quả Anh Đào', emj: '🍒' }, { id: 'melon', en: 'Melon', vi: 'Dưa Lưới', emj: '🍈' },
+                { id: 'pear', en: 'Pear', vi: 'Quả Lê', emj: '🍐' }, { id: 'kiwi', en: 'Kiwi', vi: 'Quả Kiwi', emj: '🥝' },
+                { id: 'coconut', en: 'Coconut', vi: 'Quả Dừa', emj: '🥥' }, { id: 'avocado', en: 'Avocado', vi: 'Quả Bơ', emj: '🥑' },
+                { id: 'blueberry', en: 'Blueberry', vi: 'Việt Quất', emj: '🫐' }, { id: 'olive', en: 'Olive', vi: 'Quả Ô-liu', emj: '🫒' }
             ],
             colors: [
                 { id: 'c_red', en: 'Red', vi: 'Màu Đỏ', hex: '#ef4444' }, { id: 'c_blue', en: 'Blue', vi: 'Xanh Dương', hex: '#3b82f6' },
                 { id: 'c_green', en: 'Green', vi: 'Xanh Lá', hex: '#10b981' }, { id: 'c_yellow', en: 'Yellow', vi: 'Màu Vàng', hex: '#fadd02' },
                 { id: 'c_orange', en: 'Orange', vi: 'Màu Cam', hex: '#f97316' }, { id: 'c_purple', en: 'Purple', vi: 'Màu Tím', hex: '#8b5cf6' },
                 { id: 'c_pink', en: 'Pink', vi: 'Màu Hồng', hex: '#ec4899' }, { id: 'c_black', en: 'Black', vi: 'Màu Đen', hex: '#1f2937' },
-                { id: 'c_white', en: 'White', vi: 'Màu Trắng', hex: '#ffffff' }, { id: 'c_brown', en: 'Brown', vi: 'Màu Nâu', hex: '#8B4513' }
+                { id: 'c_white', en: 'White', vi: 'Màu Trắng', hex: '#ffffff' }, { id: 'c_brown', en: 'Brown', vi: 'Màu Nâu', hex: '#8B4513' },
+                { id: 'c_gray', en: 'Gray', vi: 'Màu Xám', hex: '#9ca3af' }, { id: 'c_silver', en: 'Silver', vi: 'Màu Bạc', hex: '#d1d5db' },
+                { id: 'c_gold', en: 'Gold', vi: 'Màu Vàng Đồng', hex: '#fbbf24' }, { id: 'c_cyan', en: 'Cyan', vi: 'Xanh Lơ', hex: '#22d3ee' },
+                { id: 'c_magenta', en: 'Magenta', vi: 'Đỏ Tươi', hex: '#d946ef' }, { id: 'c_maroon', en: 'Maroon', vi: 'Nâu Đỏ', hex: '#7f1d1d' }
             ],
             vehicles: [
                 { id: 'v_car', en: 'Car', vi: 'Xe Hơi', emj: '🚗' }, { id: 'v_bus', en: 'Bus', vi: 'Xe Buýt', emj: '🚌' },
                 { id: 'v_train', en: 'Train', vi: 'Tàu Hỏa', emj: '🚂' }, { id: 'v_plane', en: 'Airplane', vi: 'Máy Bay', emj: '✈️' },
                 { id: 'v_bike', en: 'Bicycle', vi: 'Xe Đạp', emj: '🚲' }, { id: 'v_boat', en: 'Boat', vi: 'Thuyền', emj: '⛵' },
-                { id: 'v_rocket', en: 'Rocket', vi: 'Tên Lửa', emj: '🚀' }, { id: 'v_fire', en: 'Fire Truck', vi: 'Xe Cứu Hỏa', emj: '🚒' }
+                { id: 'v_rocket', en: 'Rocket', vi: 'Tên Lửa', emj: '🚀' }, { id: 'v_fire', en: 'Fire Truck', vi: 'Xe Cứu Hỏa', emj: '🚒' },
+                { id: 'v_heli', en: 'Helicopter', vi: 'Trực Thăng', emj: '🚁' }, { id: 'v_tractor', en: 'Tractor', vi: 'Máy Kéo', emj: '🚜' },
+                { id: 'v_scooter', en: 'Scooter', vi: 'Xe Trượt', emj: '🛴' }, { id: 'v_skateboard', en: 'Skateboard', vi: 'Ván Trượt', emj: '🛹' },
+                { id: 'v_ambulance', en: 'Ambulance', vi: 'Xe Cứu Thương', emj: '🚑' }, { id: 'v_police', en: 'Police Car', vi: 'Xe Cảnh Sát', emj: '🚓' },
+                { id: 'v_taxi', en: 'Taxi', vi: 'Xe Taxi', emj: '🚕' }, { id: 'v_motorcycle', en: 'Motorcycle', vi: 'Xe Máy', emj: '🏍️' },
+                { id: 'v_canoe', en: 'Canoe', vi: 'Ca-nô', emj: '🛶' }
             ],
             clothes: [
                 { id: 'cl_shirt', en: 'Shirt', vi: 'Áo sơ mi', emj: '👔' }, { id: 'cl_tshirt', en: 'T-shirt', vi: 'Áo thun', emj: '👕' },
                 { id: 'cl_pants', en: 'Pants', vi: 'Quần dài', emj: '👖' }, { id: 'cl_dress', en: 'Dress', vi: 'Váy liền', emj: '👗' },
                 { id: 'cl_skirt', en: 'Skirt', vi: 'Chân váy', emj: '🥻' }, { id: 'cl_shoes', en: 'Shoes', vi: 'Giày', emj: '👞' },
                 { id: 'cl_sneakers', en: 'Sneakers', vi: 'Giày thể thao', emj: '👟' }, { id: 'cl_hat', en: 'Hat', vi: 'Mũ / Nón', emj: '🎩' },
-                { id: 'cl_socks', en: 'Socks', vi: 'Tất / Vớ', emj: '🧦' }, { id: 'cl_jacket', en: 'Jacket', vi: 'Áo khoác', emj: '🧥' }
+                { id: 'cl_socks', en: 'Socks', vi: 'Tất / Vớ', emj: '🧦' }, { id: 'cl_jacket', en: 'Jacket', vi: 'Áo khoác', emj: '🧥' },
+                { id: 'cl_shorts', en: 'Shorts', vi: 'Quần đùi', emj: '🩳' }, { id: 'cl_scarf', en: 'Scarf', vi: 'Khăn choàng', emj: '🧣' },
+                { id: 'cl_gloves', en: 'Gloves', vi: 'Găng tay', emj: '🧤' }, { id: 'cl_boots', en: 'Boots', vi: 'Ủng', emj: '👢' },
+                { id: 'cl_glasses', en: 'Glasses', vi: 'Mắt kính', emj: '👓' }, { id: 'cl_coat', en: 'Coat', vi: 'Áo choàng', emj: '🥼' },
+                { id: 'cl_ring', en: 'Ring', vi: 'Nhẫn', emj: '💍' }
             ],
             body: [
                 { id: 'b_head', en: 'Head', vi: 'Cái đầu', emj: '🗣️' }, { id: 'b_eye', en: 'Eye', vi: 'Mắt', emj: '👁️' },
                 { id: 'b_ear', en: 'Ear', vi: 'Tai', emj: '👂' }, { id: 'b_nose', en: 'Nose', vi: 'Mũi', emj: '👃' },
                 { id: 'b_mouth', en: 'Mouth', vi: 'Miệng', emj: '👄' }, { id: 'b_tooth', en: 'Tooth', vi: 'Răng', emj: '🦷' },
                 { id: 'b_hand', en: 'Hand', vi: 'Bàn tay', emj: '🤚' }, { id: 'b_foot', en: 'Foot', vi: 'Bàn chân', emj: '🦶' },
-                { id: 'b_arm', en: 'Arm', vi: 'Cánh tay', emj: '💪' }, { id: 'b_leg', en: 'Leg', vi: 'Cái chân', emj: '🦵' }
+                { id: 'b_arm', en: 'Arm', vi: 'Cánh tay', emj: '💪' }, { id: 'b_leg', en: 'Leg', vi: 'Cái chân', emj: '🦵' },
+                { id: 'b_hair', en: 'Hair', vi: 'Tóc', emj: '💇' }, { id: 'b_finger', en: 'Finger', vi: 'Ngón tay', emj: '☝️' },
+                { id: 'b_face', en: 'Face', vi: 'Khuôn mặt', emj: '👱' }, { id: 'b_heart', en: 'Heart', vi: 'Trái tim', emj: '❤️' },
+                { id: 'b_bone', en: 'Bone', vi: 'Khúc xương', emj: '🦴' }
             ],
             food: [
                 { id: 'fd_pizza', en: 'Pizza', vi: 'Bánh Pizza', emj: '🍕' }, { id: 'fd_burger', en: 'Hamburger', vi: 'Bánh kẹp thịt', emj: '🍔' },
                 { id: 'fd_hotdog', en: 'Hot dog', vi: 'Xúc xích', emj: '🌭' }, { id: 'fd_fries', en: 'French fries', vi: 'Khoai tây chiên', emj: '🍟' },
                 { id: 'fd_bread', en: 'Bread', vi: 'Bánh mì', emj: '🍞' }, { id: 'fd_cheese', en: 'Cheese', vi: 'Phô mai', emj: '🧀' },
                 { id: 'fd_egg', en: 'Egg', vi: 'Quả trứng', emj: '🥚' }, { id: 'fd_milk', en: 'Milk', vi: 'Sữa', emj: '🥛' },
-                { id: 'fd_icecream', en: 'Ice cream', vi: 'Kem', emj: '🍦' }, { id: 'fd_cake', en: 'Cake', vi: 'Bánh ngọt', emj: '🍰' }
+                { id: 'fd_icecream', en: 'Ice cream', vi: 'Kem', emj: '🍦' }, { id: 'fd_cake', en: 'Cake', vi: 'Bánh ngọt', emj: '🍰' },
+                { id: 'fd_sushi', en: 'Sushi', vi: 'Sushi', emj: '🍣' }, { id: 'fd_salad', en: 'Salad', vi: 'Rau Trộn', emj: '🥗' },
+                { id: 'fd_soup', en: 'Soup', vi: 'Súp', emj: '🍲' }, { id: 'fd_steak', en: 'Steak', vi: 'Thịt Bò', emj: '🥩' },
+                { id: 'fd_pancake', en: 'Pancake', vi: 'Bánh Xèo', emj: '🥞' }, { id: 'fd_waffle', en: 'Waffle', vi: 'Bánh Quế', emj: '🧇' },
+                { id: 'fd_cookie', en: 'Cookie', vi: 'Bánh Quy', emj: '🍪' }, { id: 'fd_chocolate', en: 'Chocolate', vi: 'Sô cô la', emj: '🍫' },
+                { id: 'fd_candy', en: 'Candy', vi: 'Kẹo', emj: '🍬' }, { id: 'fd_popcorn', en: 'Popcorn', vi: 'Bắp Rang', emj: '🍿' },
+                { id: 'fd_donut', en: 'Donut', vi: 'Bánh Vòng', emj: '🍩' }, { id: 'fd_taco', en: 'Taco', vi: 'Bánh Taco', emj: '🌮' }
             ],
             jobs: [
                 { id: 'j_doctor', en: 'Doctor', vi: 'Bác sĩ', emj: '👨‍⚕️' }, { id: 'j_teacher', en: 'Teacher', vi: 'Giáo viên', emj: '👩‍🏫' },
                 { id: 'j_police', en: 'Police', vi: 'Cảnh sát', emj: '👮' }, { id: 'j_firefighter', en: 'Firefighter', vi: 'Lính cứu hỏa', emj: '👨‍🚒' },
                 { id: 'j_farmer', en: 'Farmer', vi: 'Nông dân', emj: '👨‍🌾' }, { id: 'j_chef', en: 'Chef', vi: 'Đầu bếp', emj: '👨‍🍳' },
                 { id: 'j_pilot', en: 'Pilot', vi: 'Phi công', emj: '👨‍✈️' }, { id: 'j_artist', en: 'Artist', vi: 'Họa sĩ', emj: '👨‍🎨' },
-                { id: 'j_singer', en: 'Singer', vi: 'Ca sĩ', emj: '👨‍🎤' }, { id: 'j_scientist', en: 'Scientist', vi: 'Nhà khoa học', emj: '👨‍🔬' }
+                { id: 'j_singer', en: 'Singer', vi: 'Ca sĩ', emj: '👨‍🎤' }, { id: 'j_scientist', en: 'Scientist', vi: 'Nhà khoa học', emj: '👨‍🔬' },
+                { id: 'j_nurse', en: 'Nurse', vi: 'Y Tá', emj: '👩‍⚕️' }, { id: 'j_dentist', en: 'Dentist', vi: 'Nha Sĩ', emj: '🦷' },
+                { id: 'j_astronaut', en: 'Astronaut', vi: 'Phi Hành Gia', emj: '🧑‍🚀' }, { id: 'j_builder', en: 'Builder', vi: 'Thợ Xây', emj: '👷' },
+                { id: 'j_mechanic', en: 'Mechanic', vi: 'Thợ Máy', emj: '🧰' }, { id: 'j_judge', en: 'Judge', vi: 'Thẩm Phán', emj: '👨‍⚖️' },
+                { id: 'j_detective', en: 'Detective', vi: 'Thám Tử', emj: '🕵️' }
             ],
             house: [
                 { id: 'h_table', en: 'Table', vi: 'Cái bàn', emj: '🪑' }, { id: 'h_chair', en: 'Chair', vi: 'Cái ghế', emj: '🪑' },
                 { id: 'h_bed', en: 'Bed', vi: 'Giường ngủ', emj: '🛏️' }, { id: 'h_sofa', en: 'Sofa', vi: 'Ghế sofa', emj: '🛋️' },
                 { id: 'h_tv', en: 'Television', vi: 'Ti vi', emj: '📺' }, { id: 'h_lamp', en: 'Lamp', vi: 'Đèn bàn', emj: '💡' },
                 { id: 'h_door', en: 'Door', vi: 'Cửa ra vào', emj: '🚪' }, { id: 'h_window', en: 'Window', vi: 'Cửa sổ', emj: '🪟' },
-                { id: 'h_clock', en: 'Clock', vi: 'Đồng hồ', emj: '🕰️' }, { id: 'h_mirror', en: 'Mirror', vi: 'Cái gương', emj: '🪞' }
+                { id: 'h_clock', en: 'Clock', vi: 'Đồng hồ', emj: '🕰️' }, { id: 'h_mirror', en: 'Mirror', vi: 'Cái gương', emj: '🪞' },
+                { id: 'h_fridge', en: 'Fridge', vi: 'Tủ lạnh', emj: '🧊' }, { id: 'h_stove', en: 'Stove', vi: 'Bếp', emj: '🍳' },
+                { id: 'h_toilet', en: 'Toilet', vi: 'Bồn cầu', emj: '🚽' }, { id: 'h_bath', en: 'Bath', vi: 'Bồn tắm', emj: '🛁' },
+                { id: 'h_roof', en: 'Roof', vi: 'Mái nhà', emj: '🏠' }, { id: 'h_wall', en: 'Wall', vi: 'Bức tường', emj: '🧱' },
+                { id: 'h_stairs', en: 'Stairs', vi: 'Cầu thang', emj: '🪜' }
             ],
             school: [
                 { id: 'sc_book', en: 'Book', vi: 'Quyển sách', emj: '📘' }, { id: 'sc_pen', en: 'Pen', vi: 'Cây bút', emj: '🖊️' },
                 { id: 'sc_pencil', en: 'Pencil', vi: 'Bút chì', emj: '✏️' }, { id: 'sc_ruler', en: 'Ruler', vi: 'Cây thước', emj: '📏' },
                 { id: 'sc_eraser', en: 'Eraser', vi: 'Cục tẩy', emj: '🧽' }, { id: 'sc_bag', en: 'Backpack', vi: 'Cặp sách', emj: '🎒' },
                 { id: 'sc_desk', en: 'Desk', vi: 'Bàn học', emj: '🪑' }, { id: 'sc_board', en: 'Board', vi: 'Bảng đen', emj: '🏫' },
-                { id: 'sc_paper', en: 'Paper', vi: 'Tờ giấy', emj: '📄' }, { id: 'sc_scissors', en: 'Scissors', vi: 'Cái kéo', emj: '✂️' }
+                { id: 'sc_paper', en: 'Paper', vi: 'Tờ giấy', emj: '📄' }, { id: 'sc_scissors', en: 'Scissors', vi: 'Cái kéo', emj: '✂️' },
+                { id: 'sc_teacher', en: 'Teacher', vi: 'Giáo viên', emj: '👩‍🏫' }, { id: 'sc_student', en: 'Student', vi: 'Học sinh', emj: '🧑‍🎓' },
+                { id: 'sc_library', en: 'Library', vi: 'Thư viện', emj: '📚' }, { id: 'sc_computer', en: 'Computer', vi: 'Máy tính', emj: '💻' },
+                { id: 'sc_calculator', en: 'Calculator', vi: 'Máy tính bỏ túi', emj: '🧮' }, { id: 'sc_map', en: 'Map', vi: 'Bản đồ', emj: '🗺️' },
+                { id: 'sc_globe', en: 'Globe', vi: 'Quả địa cầu', emj: '🌍' }
             ],
             sports: [
                 { id: 'sp_soccer', en: 'Soccer', vi: 'Bóng đá', emj: '⚽' }, { id: 'sp_basketball', en: 'Basketball', vi: 'Bóng rổ', emj: '🏀' },
                 { id: 'sp_tennis', en: 'Tennis', vi: 'Quần vợt', emj: '🎾' }, { id: 'sp_volleyball', en: 'Volleyball', vi: 'Bóng chuyền', emj: '🏐' },
                 { id: 'sp_baseball', en: 'Baseball', vi: 'Bóng chày', emj: '⚾' }, { id: 'sp_swimming', en: 'Swimming', vi: 'Bơi lội', emj: '🏊' },
                 { id: 'sp_running', en: 'Running', vi: 'Chạy bộ', emj: '🏃' }, { id: 'sp_cycling', en: 'Cycling', vi: 'Đạp xe', emj: '🚴' },
-                { id: 'sp_boxing', en: 'Boxing', vi: 'Quyền anh', emj: '🥊' }, { id: 'sp_golf', en: 'Golf', vi: 'Đánh gôn', emj: '⛳' }
+                { id: 'sp_boxing', en: 'Boxing', vi: 'Quyền anh', emj: '🥊' }, { id: 'sp_golf', en: 'Golf', vi: 'Đánh gôn', emj: '⛳' },
+                { id: 'sp_badminton', en: 'Badminton', vi: 'Cầu lông', emj: '🏸' }, { id: 'sp_pingpong', en: 'Table Tennis', vi: 'Bóng bàn', emj: '🏓' },
+                { id: 'sp_gymnastics', en: 'Gymnastics', vi: 'Thể dục dụng cụ', emj: '🤸' }, { id: 'sp_skiing', en: 'Skiing', vi: 'Trượt tuyết', emj: '⛷️' },
+                { id: 'sp_skating', en: 'Skating', vi: 'Trượt băng', emj: '⛸️' }, { id: 'sp_surfing', en: 'Surfing', vi: 'Lướt sóng', emj: '🏄' },
+                { id: 'sp_archery', en: 'Archery', vi: 'Bắn cung', emj: '🏹' }, { id: 'sp_martialarts', en: 'Martial Arts', vi: 'Võ thuật', emj: '🥋' }
             ],
             vegetables: [
                 { id: 'vg_tomato', en: 'Tomato', vi: 'Cà chua', emj: '🍅' }, { id: 'vg_potato', en: 'Potato', vi: 'Khoai tây', emj: '🥔' },
                 { id: 'vg_onion', en: 'Onion', vi: 'Hành tây', emj: '🧅' }, { id: 'vg_carrot', en: 'Carrot', vi: 'Cà rốt', emj: '🥕' },
                 { id: 'vg_cabbage', en: 'Cabbage', vi: 'Bắp cải', emj: '🥬' }, { id: 'vg_broccoli', en: 'Broccoli', vi: 'Súp lơ xanh', emj: '🥦' },
                 { id: 'vg_corn', en: 'Corn', vi: 'Bắp / Ngô', emj: '🌽' }, { id: 'vg_cucumber', en: 'Cucumber', vi: 'Dưa chuột', emj: '🥒' },
-                { id: 'vg_garlic', en: 'Garlic', vi: 'Củ tỏi', emj: '🧄' }, { id: 'vg_mushroom', en: 'Mushroom', vi: 'Cây nấm', emj: '🍄' }
+                { id: 'vg_garlic', en: 'Garlic', vi: 'Củ tỏi', emj: '🧄' }, { id: 'vg_mushroom', en: 'Mushroom', vi: 'Cây nấm', emj: '🍄' },
+                { id: 'vg_eggplant', en: 'Eggplant', vi: 'Cà Tím', emj: '🍆' }, { id: 'vg_bellpepper', en: 'Bell Pepper', vi: 'Ớt Chuông', emj: '🫑' },
+                { id: 'vg_hotpepper', en: 'Hot Pepper', vi: 'Ớt Cay', emj: '🌶️' }, { id: 'vg_sweetpotato', en: 'Sweet Potato', vi: 'Khoai Lang', emj: '🍠' },
+                { id: 'vg_peanut', en: 'Peanut', vi: 'Đậu Phộng', emj: '🥜' }, { id: 'vg_chestnut', en: 'Chestnut', vi: 'Hạt Dẻ', emj: '🌰' },
+                { id: 'vg_peapod', en: 'Pea Pod', vi: 'Đậu Hà Lan', emj: '🫛' }
             ],
             space: [
                 { id: 'spc_sun', en: 'Sun', vi: 'Mặt trời', emj: '☀️' }, { id: 'spc_moon', en: 'Moon', vi: 'Mặt trăng', emj: '🌙' },
                 { id: 'spc_earth', en: 'Earth', vi: 'Trái đất', emj: '🌍' }, { id: 'spc_star', en: 'Star', vi: 'Ngôi sao', emj: '⭐' },
                 { id: 'spc_planet', en: 'Planet', vi: 'Hành tinh', emj: '🪐' }, { id: 'spc_rocket', en: 'Rocket', vi: 'Tên lửa', emj: '🚀' },
                 { id: 'spc_astronaut', en: 'Astronaut', vi: 'Phi hành gia', emj: '🧑‍🚀' }, { id: 'spc_alien', en: 'Alien', vi: 'Người ngoài hành tinh', emj: '👽' },
-                { id: 'spc_comet', en: 'Comet', vi: 'Sao chổi', emj: '☄️' }, { id: 'spc_telescope', en: 'Telescope', vi: 'Kính viễn vọng', emj: '🔭' }
+                { id: 'spc_comet', en: 'Comet', vi: 'Sao chổi', emj: '☄️' }, { id: 'spc_telescope', en: 'Telescope', vi: 'Kính viễn vọng', emj: '🔭' },
+                { id: 'spc_galaxy', en: 'Galaxy', vi: 'Ngân hà', emj: '🌌' }, { id: 'spc_meteor', en: 'Meteor', vi: 'Sao băng', emj: '🌠' },
+                { id: 'spc_satellite', en: 'Satellite', vi: 'Vệ tinh', emj: '🛰️' }, { id: 'spc_spaceship', en: 'Spaceship', vi: 'Tàu vũ trụ', emj: '🛸' }
             ],
             weather: [
                 { id: 'w_sun', en: 'Sun', vi: 'Mặt trời', emj: '☀️' }, { id: 'w_rain', en: 'Rain', vi: 'Mưa', emj: '🌧️' },
                 { id: 'w_cloud', en: 'Cloud', vi: 'Mây', emj: '☁️' }, { id: 'w_snow', en: 'Snow', vi: 'Tuyết', emj: '❄️' },
                 { id: 'w_wind', en: 'Wind', vi: 'Gió', emj: '💨' }, { id: 'w_storm', en: 'Storm', vi: 'Bão', emj: '⛈️' },
-                { id: 'w_rainbow', en: 'Rainbow', vi: 'Cầu vồng', emj: '🌈' }, { id: 'w_lightning', en: 'Lightning', vi: 'Sét', emj: '⚡' }
+                { id: 'w_rainbow', en: 'Rainbow', vi: 'Cầu vồng', emj: '🌈' }, { id: 'w_lightning', en: 'Lightning', vi: 'Sét', emj: '⚡' },
+                { id: 'w_tornado', en: 'Tornado', vi: 'Lốc xoáy', emj: '🌪️' }, { id: 'w_fog', en: 'Fog', vi: 'Sương mù', emj: '🌫️' },
+                { id: 'w_ice', en: 'Ice', vi: 'Băng', emj: '🧊' }, { id: 'w_umbrella', en: 'Umbrella', vi: 'Cái ô', emj: '☔' },
+                { id: 'w_temperature', en: 'Temperature', vi: 'Nhiệt độ', emj: '🌡️' }, { id: 'w_drop', en: 'Drop', vi: 'Giọt nước', emj: '💧' }
             ],
             flags: [
                 { id: 'fl_vn', en: 'Vietnam', vi: 'Việt Nam', emj: '🇻🇳' }, { id: 'fl_us', en: 'USA', vi: 'Mỹ', emj: '🇺🇸' },
@@ -447,6 +629,78 @@
                 { id: 'fl_ve', en: 'Venezuela', vi: 'Venezuela', emj: '🇻🇪' }, { id: 'fl_ng', en: 'Nigeria', vi: 'Nigeria', emj: '🇳🇬' },
                 { id: 'fl_ke', en: 'Kenya', vi: 'Kenya', emj: '🇰🇪' }, { id: 'fl_ma', en: 'Morocco', vi: 'Ma-rốc', emj: '🇲🇦' }
             ],
+            shapes: [
+                { id: 'sh_circle', en: 'Circle', vi: 'Hình tròn', emj: '🔴' }, { id: 'sh_square', en: 'Square', vi: 'Hình vuông', emj: '🟥' },
+                { id: 'sh_triangle', en: 'Triangle', vi: 'Hình tam giác', emj: '🔺' }, { id: 'sh_star', en: 'Star', vi: 'Ngôi sao', emj: '⭐' },
+                { id: 'sh_heart', en: 'Heart', vi: 'Trái tim', emj: '❤️' }, { id: 'sh_rectangle', en: 'Rectangle', vi: 'Hình chữ nhật', emj: '▭' },
+                { id: 'sh_diamond', en: 'Diamond', vi: 'Hình thoi', emj: '♦️' }, { id: 'sh_oval', en: 'Oval', vi: 'Hình bầu dục', emj: '0️⃣' }
+            ],
+            toys: [
+                { id: 'ty_bear', en: 'Teddy Bear', vi: 'Gấu bông', emj: '🧸' }, { id: 'ty_doll', en: 'Doll', vi: 'Búp bê', emj: '🎎' },
+                { id: 'ty_ball', en: 'Ball', vi: 'Quả bóng', emj: '⚽' }, { id: 'ty_car', en: 'Toy Car', vi: 'Xe đồ chơi', emj: '🏎️' },
+                { id: 'ty_train', en: 'Train', vi: 'Tàu hỏa', emj: '🚂' }, { id: 'ty_robot', en: 'Robot', vi: 'Người máy', emj: '🤖' },
+                { id: 'ty_balloon', en: 'Balloon', vi: 'Bóng bay', emj: '🎈' }, { id: 'ty_kite', en: 'Kite', vi: 'Cái diều', emj: '🪁' },
+                { id: 'ty_yoyo', en: 'Yo-yo', vi: 'Yo-yo', emj: '🪀' }, { id: 'ty_blocks', en: 'Blocks', vi: 'Xếp hình', emj: '🧱' }
+            ],
+            emotions: [
+                { id: 'em_happy', en: 'Happy', vi: 'Vui vẻ', emj: '😄' }, { id: 'em_sad', en: 'Sad', vi: 'Buồn bã', emj: '😢' },
+                { id: 'em_angry', en: 'Angry', vi: 'Tức giận', emj: '😡' }, { id: 'em_cry', en: 'Crying', vi: 'Khóc', emj: '😭' },
+                { id: 'em_laugh', en: 'Laughing', vi: 'Cười lớn', emj: '🤣' }, { id: 'em_sleepy', en: 'Sleepy', vi: 'Buồn ngủ', emj: '😪' },
+                { id: 'em_scared', en: 'Scared', vi: 'Sợ hãi', emj: '😱' }, { id: 'em_surprise', en: 'Surprised', vi: 'Ngạc nhiên', emj: '😲' },
+                { id: 'em_love', en: 'Love', vi: 'Yêu thương', emj: '😍' }, { id: 'em_sick', en: 'Sick', vi: 'Bị ốm', emj: '🤒' }
+            ],
+            actions: [
+                { id: 'ac_eat', en: 'Eat', vi: 'Ăn', emj: '🍽️' }, { id: 'ac_drink', en: 'Drink', vi: 'Uống', emj: '🥤' },
+                { id: 'ac_sleep', en: 'Sleep', vi: 'Ngủ', emj: '🛌' }, { id: 'ac_run', en: 'Run', vi: 'Chạy', emj: '🏃' },
+                { id: 'ac_jump', en: 'Jump', vi: 'Nhảy', emj: '🦘' }, { id: 'ac_walk', en: 'Walk', vi: 'Đi bộ', emj: '🚶' },
+                { id: 'ac_dance', en: 'Dance', vi: 'Nhảy múa', emj: '💃' }, { id: 'ac_sing', en: 'Sing', vi: 'Hát', emj: '🎤' },
+                { id: 'ac_read', en: 'Read', vi: 'Đọc sách', emj: '📖' }, { id: 'ac_write', en: 'Write', vi: 'Viết', emj: '✍️' },
+                { id: 'ac_swim', en: 'Swim', vi: 'Bơi', emj: '🏊' }, { id: 'ac_wash', en: 'Wash', vi: 'Rửa tay', emj: '🧼' }
+            ],
+            nature: [
+                { id: 'na_tree', en: 'Tree', vi: 'Cây', emj: '🌳' }, { id: 'na_flower', en: 'Flower', vi: 'Bông hoa', emj: '🌸' },
+                { id: 'na_leaf', en: 'Leaf', vi: 'Chiếc lá', emj: '🍃' }, { id: 'na_grass', en: 'Grass', vi: 'Bãi cỏ', emj: '🌿' },
+                { id: 'na_river', en: 'River', vi: 'Dòng sông', emj: '🏞️' }, { id: 'na_mountain', en: 'Mountain', vi: 'Ngọn núi', emj: '⛰️' },
+                { id: 'na_waterfall', en: 'Waterfall', vi: 'Thác nước', emj: '🌊' }, { id: 'na_beach', en: 'Beach', vi: 'Bãi biển', emj: '🏖️' },
+                { id: 'na_stone', en: 'Stone', vi: 'Hòn đá', emj: '🪨' }, { id: 'na_fire', en: 'Fire', vi: 'Ngọn lửa', emj: '🔥' },
+                { id: 'na_water', en: 'Water', vi: 'Nước', emj: '💧' }, { id: 'na_wind', en: 'Wind', vi: 'Gió', emj: '💨' }
+            ],
+            insects: [
+                { id: 'in_butterfly', en: 'Butterfly', vi: 'Con bướm', emj: '🦋' }, { id: 'in_ant', en: 'Ant', vi: 'Con kiến', emj: '🐜' },
+                { id: 'in_bee', en: 'Bee', vi: 'Con ong', emj: '🐝' }, { id: 'in_ladybug', en: 'Ladybug', vi: 'Bọ rùa', emj: '🐞' },
+                { id: 'in_spider', en: 'Spider', vi: 'Con nhện', emj: '🕷️' }, { id: 'in_caterpillar', en: 'Caterpillar', vi: 'Sâu bướm', emj: '🐛' },
+                { id: 'in_snail', en: 'Snail', vi: 'Ốc sên', emj: '🐌' }, { id: 'in_mosquito', en: 'Mosquito', vi: 'Con muỗi', emj: '🦟' },
+                { id: 'in_fly', en: 'Fly', vi: 'Con ruồi', emj: '🪰' }, { id: 'in_worm', en: 'Worm', vi: 'Con giun', emj: '🪱' }
+            ],
+            music: [
+                { id: 'mu_piano', en: 'Piano', vi: 'Đàn Piano', emj: '🎹' }, { id: 'mu_guitar', en: 'Guitar', vi: 'Đàn Guitar', emj: '🎸' },
+                { id: 'mu_drum', en: 'Drum', vi: 'Cái trống', emj: '🥁' }, { id: 'mu_violin', en: 'Violin', vi: 'Đàn vĩ cầm', emj: '🎻' },
+                { id: 'mu_trumpet', en: 'Trumpet', vi: 'Kèn Trumpet', emj: '🎺' }, { id: 'mu_saxophone', en: 'Saxophone', vi: 'Kèn Saxophone', emj: '🎷' },
+                { id: 'mu_flute', en: 'Flute', vi: 'Cây sáo', emj: '🪈' }, { id: 'mu_accordion', en: 'Accordion', vi: 'Đàn phong cầm', emj: '🪗' },
+                { id: 'mu_microphone', en: 'Microphone', vi: 'Micro', emj: '🎤' }, { id: 'mu_headphone', en: 'Headphone', vi: 'Tai nghe', emj: '🎧' }
+            ],
+            places: [
+                { id: 'pl_park', en: 'Park', vi: 'Công viên', emj: '🏞️' }, { id: 'pl_hospital', en: 'Hospital', vi: 'Bệnh viện', emj: '🏥' },
+                { id: 'pl_supermarket', en: 'Supermarket', vi: 'Siêu thị', emj: '🛒' }, { id: 'pl_school', en: 'School', vi: 'Trường học', emj: '🏫' },
+                { id: 'pl_bank', en: 'Bank', vi: 'Ngân hàng', emj: '🏦' }, { id: 'pl_postoffice', en: 'Post Office', vi: 'Bưu điện', emj: '🏤' },
+                { id: 'pl_policestation', en: 'Police Station', vi: 'Đồn cảnh sát', emj: '🚓' }, { id: 'pl_firestation', en: 'Fire Station', vi: 'Trạm cứu hỏa', emj: '🚒' },
+                { id: 'pl_library', en: 'Library', vi: 'Thư viện', emj: '📚' }, { id: 'pl_restaurant', en: 'Restaurant', vi: 'Nhà hàng', emj: '🍽️' },
+                { id: 'pl_cinema', en: 'Cinema', vi: 'Rạp phim', emj: '🍿' }
+            ],
+            hobbies: [
+                { id: 'ho_singing', en: 'Singing', vi: 'Ca hát', emj: '🎤' }, { id: 'ho_dancing', en: 'Dancing', vi: 'Nhảy múa', emj: '💃' },
+                { id: 'ho_reading', en: 'Reading', vi: 'Đọc sách', emj: '📖' }, { id: 'ho_drawing', en: 'Drawing', vi: 'Vẽ tranh', emj: '🎨' },
+                { id: 'ho_swimming', en: 'Swimming', vi: 'Bơi lội', emj: '🏊' }, { id: 'ho_cooking', en: 'Cooking', vi: 'Nấu ăn', emj: '🍳' },
+                { id: 'ho_gardening', en: 'Gardening', vi: 'Làm vườn', emj: '🌱' }, { id: 'ho_photography', en: 'Photography', vi: 'Chụp ảnh', emj: '📷' },
+                { id: 'ho_gaming', en: 'Gaming', vi: 'Chơi game', emj: '🎮' }, { id: 'ho_fishing', en: 'Fishing', vi: 'Câu cá', emj: '🎣' }
+            ],
+            tech: [
+                { id: 'te_phone', en: 'Phone', vi: 'Điện thoại', emj: '📱' }, { id: 'te_computer', en: 'Computer', vi: 'Máy tính', emj: '💻' },
+                { id: 'te_tablet', en: 'Tablet', vi: 'Máy tính bảng', emj: '📱' }, { id: 'te_camera', en: 'Camera', vi: 'Máy ảnh', emj: '📷' },
+                { id: 'te_television', en: 'Television', vi: 'Tivi', emj: '📺' }, { id: 'te_watch', en: 'Watch', vi: 'Đồng hồ', emj: '⌚' },
+                { id: 'te_robot', en: 'Robot', vi: 'Người máy', emj: '🤖' }, { id: 'te_mouse', en: 'Mouse', vi: 'Chuột máy tính', emj: '🖱️' },
+                { id: 'te_keyboard', en: 'Keyboard', vi: 'Bàn phím', emj: '⌨️' }, { id: 'te_printer', en: 'Printer', vi: 'Máy in', emj: '🖨️' }
+            ],
             alphabet: [], numbers: []
         };
 
@@ -465,23 +719,31 @@
             const t10=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
             if($so<20) return t1[$so];
             if($so<100) return t10[Math.floor($so/10)] + ($so%10 ? '-'+t1[$so%10].toLowerCase() : '');
-            return '100+'; // Giới hạn cho nhẹ mảng
+            if($so<1000) return t1[Math.floor($so/100)] + ' Hundred' + ($so%100 ? ' and ' + ham_doc_so($so%100).toLowerCase() : '');
+            if($so===1000) return 'One Thousand';
+            return $so; 
         }
 
         function ham_khoi_tao_data_tu_dong() {
             const m = ['text-red-500','text-orange-500','text-yellow-500','text-green-500','text-blue-500','text-purple-500','text-pink-500'];
-            for(let i=1; i<=30; i++) {
+            for(let i=1; i<=100; i++) {
                 $du_lieu.numbers.push({ id:'n_'+i, en:ham_doc_so(i), vi:'Số '+i, emj:i, color:m[i%m.length] });
+            }
+            for(let i=2; i<=10; i++) {
+                const num = i*100;
+                $du_lieu.numbers.push({ id:'n_'+num, en:ham_doc_so(num), vi:'Số '+num, emj:num, color:m[i%m.length] });
             }
             const az = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             for(let i=0; i<az.length; i++) {
-                $du_lieu.alphabet.push({ id:'a_'+az[i], en:az[i], vi:'Chữ '+az[i], emj:az[i], color:m[i%m.length] });
+                $du_lieu.alphabet.push({ id:'a_'+az[i], en:az[i], vi:'Chữ '+az[i], emj:az[i] + ' ' + az[i].toLowerCase(), color:m[i%m.length] });
             }
             // Mảng gom cho Game
             $tat_ca_tu = [
                 ...$du_lieu.family, ...$du_lieu.animals, ...$du_lieu.fruits, ...$du_lieu.colors, ...$du_lieu.vehicles, 
                 ...$du_lieu.clothes, ...$du_lieu.body, ...$du_lieu.food, ...$du_lieu.jobs, ...$du_lieu.house,
-                ...$du_lieu.school, ...$du_lieu.sports, ...$du_lieu.vegetables, ...$du_lieu.space, ...$du_lieu.weather
+                ...$du_lieu.school, ...$du_lieu.sports, ...$du_lieu.vegetables, ...$du_lieu.space, ...$du_lieu.weather,
+                ...$du_lieu.shapes, ...$du_lieu.toys, ...$du_lieu.emotions, ...$du_lieu.actions,
+                ...$du_lieu.nature, ...$du_lieu.insects, ...$du_lieu.music, ...$du_lieu.places, ...$du_lieu.hobbies, ...$du_lieu.tech
             ];
             
             // Xử lý logic Streak
@@ -527,18 +789,82 @@
             $nhac_nen_bat = !$nhac_nen_bat;
         }
 
+        let $ngon_ngu_hoc = 'en';
+        function ham_toggle_ngon_ngu() {
+            $ngon_ngu_hoc = $ngon_ngu_hoc === 'en' ? 'vi' : 'en';
+            const btn = document.getElementById('btn_lang');
+            if(btn) btn.innerHTML = $ngon_ngu_hoc === 'en' ? 'EN' : 'VI';
+            
+            // Hoán đổi EN và VI trong toàn bộ dữ liệu
+            Object.values($du_lieu).forEach(arr => {
+                arr.forEach(x => { let t = x.en; x.en = x.vi; x.vi = t; });
+            });
+            
+            ham_render_tat_ca();
+            // Thoát game hiện tại nếu đang chơi
+            if(!document.getElementById('game_play_area').classList.contains('hidden')) {
+                ham_thoat_game();
+            }
+        }
+
         function ham_phat_sfx($id) {
-            const a = document.getElementById('audio_'+$id);
-            if(a) { a.currentTime=0; a.volume=0.6; a.play().catch(()=>{}); }
+            ham_phat_sfx_du_phong($id);
+        }
+
+        function ham_phat_sfx_du_phong($id) {
+            try {
+                if(!window.audioCtx) window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const ctx = window.audioCtx;
+                
+                const playSound = () => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    
+                    if($id === 'correct' || $id === 'win' || $id === 'level_up') {
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(600, ctx.currentTime);
+                        osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1);
+                        gain.gain.setValueAtTime(0.5, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                        osc.start(); osc.stop(ctx.currentTime + 0.3);
+                    } else if($id === 'wrong') {
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(150, ctx.currentTime);
+                        osc.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 0.3);
+                        gain.gain.setValueAtTime(0.5, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                        osc.start(); osc.stop(ctx.currentTime + 0.3);
+                    }
+                };
+
+                if(ctx.state === 'suspended') {
+                    ctx.resume().then(playSound);
+                } else {
+                    playSound();
+                }
+            } catch(e) {
+                // Dự phòng cuối cùng: Dùng giọng đọc AI để nói "Oh no" hoặc "Ding"
+                if ('speechSynthesis' in window) {
+                    let msg = new SpeechSynthesisUtterance($id === 'wrong' ? "Oops" : "Ding");
+                    msg.lang = 'en-US';
+                    msg.pitch = $id === 'wrong' ? 0.2 : 1.8;
+                    msg.rate = 1.5;
+                    window.speechSynthesis.speak(msg);
+                }
+            }
         }
 
         let $giong_doc_en = null;
+        let $giong_doc_vi = null;
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = () => {
                 const voices = window.speechSynthesis.getVoices();
                 $giong_doc_en = voices.find(v => v.name.includes('Google US English')) 
                              || voices.find(v => v.lang.includes('en-US') && v.name.includes('Female'))
                              || voices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
+                $giong_doc_vi = voices.find(v => v.lang === 'vi-VN') || voices.find(v => v.lang.startsWith('vi'));
             };
         }
 
@@ -546,15 +872,16 @@
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 let msg = new SpeechSynthesisUtterance($tu);
-                msg.lang = 'en-US'; 
                 
-                // Fallback nếu onvoiceschanged chưa kịp chạy
-                if(!$giong_doc_en) {
-                    const voices = window.speechSynthesis.getVoices();
-                    $giong_doc_en = voices.find(v => v.name.includes('Google US English')) || voices.find(v => v.lang === 'en-US');
-                }
+                // Fallback
+                const voices = window.speechSynthesis.getVoices();
+                if(!$giong_doc_en) $giong_doc_en = voices.find(v => v.name.includes('Google US English')) || voices.find(v => v.lang.startsWith('en'));
+                if(!$giong_doc_vi) $giong_doc_vi = voices.find(v => v.lang === 'vi-VN') || voices.find(v => v.lang.startsWith('vi'));
+
+                msg.lang = $ngon_ngu_hoc === 'vi' ? 'vi-VN' : 'en-US'; 
+                const voice = $ngon_ngu_hoc === 'vi' ? $giong_doc_vi : $giong_doc_en;
+                if(voice) msg.voice = voice;
                 
-                if($giong_doc_en) msg.voice = $giong_doc_en;
                 msg.rate = $toc_do; msg.pitch = 1.1;
                 window.speechSynthesis.speak(msg);
             }
@@ -590,7 +917,7 @@
             return `
                 <div class="flip-card group" onclick="ham_lat_the(this, '${$item.en}', event)">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front overflow-hidden">
+                        <div class="flip-card-front overflow-hidden" data-word="${$item.en}">
                             ${frontContent}
                             <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none"></div>
                             <div class="absolute bottom-2 right-2 text-gray-300"><i class="fa-solid fa-rotate animate-pulse"></i></div>
@@ -620,9 +947,9 @@
         // Render Base Grids (Simple)
         function ham_render_luoi_don_gian($mang, $id, $sizeClass) {
             document.getElementById($id).innerHTML = $mang.map(x => `
-                <div onclick="ham_phat_am('${x.en}')" class="bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-neo border border-white flex flex-col items-center justify-center cursor-pointer hover:-translate-y-1 transition active:translate-y-1 min-h-[90px]">
-                    <div class="text-${$sizeClass} font-black ${x.color || 'text-gray-700'} drop-shadow-sm">${x.emj}</div>
-                    <div class="text-[0.65rem] md:text-xs font-bold text-gray-500 uppercase mt-1 text-center leading-tight">${x.en}</div>
+                <div onclick="ham_lat_the(this, '${x.en}', event)" class="glass-panel rounded-2xl p-2 flex flex-col items-center justify-center cursor-pointer hover:-translate-y-2 hover:shadow-xl transition-all active:translate-y-1 min-h-[100px] group border border-white/40 simple-card relative overflow-hidden" data-word="${x.en}">
+                    <div class="text-${$sizeClass} font-black ${x.color || 'text-gray-700'} drop-shadow-sm group-hover:scale-110 transition-transform">${x.emj}</div>
+                    <div class="text-[0.65rem] md:text-xs font-bold text-gray-500 uppercase mt-2 text-center leading-tight group-hover:text-blue-500">${x.en}</div>
                 </div>
             `).join('');
         }
@@ -631,6 +958,10 @@
             ham_render_luoi_don_gian($du_lieu.alphabet, 'k_alpha', '4xl md:text-5xl');
             ham_render_luoi_don_gian($du_lieu.numbers, 'k_num', '3xl md:text-4xl');
             document.getElementById('k_fam').innerHTML = $du_lieu.family.map(x => ham_tao_the_3D(x, 'text-rose-600')).join('');
+            document.getElementById('k_sha').innerHTML = $du_lieu.shapes.map(x => ham_tao_the_3D(x, 'text-fuchsia-600')).join('');
+            document.getElementById('k_toy').innerHTML = $du_lieu.toys.map(x => ham_tao_the_3D(x, 'text-pink-600')).join('');
+            document.getElementById('k_emo').innerHTML = $du_lieu.emotions.map(x => ham_tao_the_3D(x, 'text-yellow-600')).join('');
+            document.getElementById('k_act').innerHTML = $du_lieu.actions.map(x => ham_tao_the_3D(x, 'text-cyan-600')).join('');
             document.getElementById('k_ani').innerHTML = $du_lieu.animals.map(x => ham_tao_the_3D(x, 'text-blue-600')).join('');
             document.getElementById('k_fru').innerHTML = $du_lieu.fruits.map(x => ham_tao_the_3D(x, 'text-red-600')).join('');
             document.getElementById('k_col').innerHTML = $du_lieu.colors.map(x => ham_tao_the_3D(x, 'text-green-600')).join('');
@@ -646,19 +977,43 @@
             document.getElementById('k_spc').innerHTML = $du_lieu.space.map(x => ham_tao_the_3D(x, 'text-indigo-700')).join('');
             document.getElementById('k_wea').innerHTML = $du_lieu.weather.map(x => ham_tao_the_3D(x, 'text-sky-500')).join('');
             document.getElementById('k_fla').innerHTML = $du_lieu.flags.map(x => ham_tao_the_3D(x, 'text-emerald-600')).join('');
+            document.getElementById('k_nat').innerHTML = $du_lieu.nature.map(x => ham_tao_the_3D(x, 'text-green-700')).join('');
+            document.getElementById('k_ins').innerHTML = $du_lieu.insects.map(x => ham_tao_the_3D(x, 'text-lime-700')).join('');
+            document.getElementById('k_mus').innerHTML = $du_lieu.music.map(x => ham_tao_the_3D(x, 'text-indigo-600')).join('');
+            document.getElementById('k_pla').innerHTML = $du_lieu.places.map(x => ham_tao_the_3D(x, 'text-cyan-700')).join('');
+            document.getElementById('k_hob').innerHTML = $du_lieu.hobbies.map(x => ham_tao_the_3D(x, 'text-pink-500')).join('');
+            document.getElementById('k_tec').innerHTML = $du_lieu.tech.map(x => ham_tao_the_3D(x, 'text-slate-700')).join('');
         }
 
         function ham_chuyen_tab($id) {
             document.querySelectorAll('.cat-sec').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.nav-btn').forEach(el => el.classList.replace('border-blue-400','border-transparent') || el.classList.replace('ring-4','ring-0'));
-            
             document.getElementById($id).classList.remove('hidden');
-            const btn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes($id));
-            if(btn && $id !== 'games') {
-                btn.classList.replace('border-transparent', 'border-blue-400');
-                btn.classList.add('ring-4', 'ring-blue-200');
-            }
-            if($id !== 'games') ham_thoat_game();
+            
+            // AutoPlay Reset
+            if(window.$auto_play_interval) ham_auto_play(true); // Stop if running
+        }
+
+        function ham_ve_trang_chu() {
+            document.getElementById('khu_vuc_hoc_tap').classList.add('hidden');
+            document.getElementById('game_play_area').classList.add('hidden');
+            document.getElementById('game_menu').classList.add('hidden');
+            document.getElementById('khu_vuc_danh_sach_chu_de').classList.remove('hidden');
+        }
+
+        function ham_chon_game() {
+            document.getElementById('khu_vuc_danh_sach_chu_de').classList.add('hidden');
+            document.getElementById('khu_vuc_hoc_tap').classList.add('hidden');
+            document.getElementById('game_play_area').classList.add('hidden');
+            document.getElementById('game_menu').classList.remove('hidden');
+            ham_chuyen_tab('games');
+        }
+
+        function ham_chon_chu_de(id) {
+            document.getElementById('khu_vuc_danh_sach_chu_de').classList.add('hidden');
+            document.getElementById('khu_vuc_hoc_tap').classList.remove('hidden');
+            document.getElementById('game_play_area').classList.add('hidden');
+            document.getElementById('game_menu').classList.add('hidden');
+            ham_chuyen_tab(id);
         }
 
         function ham_hien_thi_modal_level() {
@@ -696,9 +1051,9 @@
         }
 
         function ham_thoat_game() {
-            document.getElementById('game_menu').classList.remove('hidden');
             document.getElementById('game_play_area').classList.add('hidden');
             document.getElementById('game_board').innerHTML = '';
+            ham_chon_game(); // Trở về siêu thị trò chơi thay vì về trang chủ
         }
 
         function ham_bao_ket_qua($isWin) {
@@ -711,10 +1066,13 @@
                 msg.className = 'text-6xl md:text-8xl font-black text-green-500 drop-shadow-xl transform scale-110 transition-transform';
                 ham_phat_sfx('correct'); ham_cong_diem(5); $game_diem_session+=5;
                 document.getElementById('game_session_score').innerText = $game_diem_session;
+                if($game_cau_hoi && $game_cau_hoi.en) ham_phat_am($game_cau_hoi.en);
+                ham_pet_cheer(); // V3 Pet Cheer
             } else {
                 msg.innerHTML = '<i class="fa-solid fa-face-sad-tear text-blue-400"></i> OOPS!';
                 msg.className = 'text-6xl md:text-8xl font-black text-red-500 drop-shadow-xl transform scale-100 transition-transform animate-wiggle';
                 ham_phat_sfx('wrong');
+                // Không đọc đáp án đúng ra khi bấm sai để bé phải tự nghĩ
             }
 
             setTimeout(() => {
@@ -735,6 +1093,8 @@
             else if($game_id === 'danh_van') ham_game_danh_van(b);
             else if($game_id === 'noi_tu') ham_game_noi_tu(b);
             else if($game_id === 'trac_nghiem') ham_game_trac_nghiem(b);
+            else if($game_id === 'hop_bi_mat') ham_game_hop_bi_mat(b);
+            else if($game_id === 'phan_loai') ham_game_phan_loai(b);
         }
 
         // --- STREAMING_CHUNK:Minigame 1 & 2 (Find Image / Find Word)... ---
@@ -748,7 +1108,7 @@
                 <div class="grid grid-cols-2 gap-4 w-full max-w-md">
                     ${ops.map(o => `<button onclick="ham_bao_ket_qua('${o.id}'==='${$game_cau_hoi.id}')" class="h-32 bg-white rounded-3xl shadow-neo border-4 border-white hover:border-blue-300 text-7xl flex items-center justify-center active:translate-y-1" ${o.hex ? `style="background-color:${o.hex}"`:''}>${o.emj || ''}</button>`).join('')}
                 </div>`;
-            setTimeout(()=>ham_phat_am($game_cau_hoi.en), 400);
+            ham_phat_am($game_cau_hoi.en);
         }
 
         function ham_game_tim_chu(b) {
@@ -832,6 +1192,8 @@
                     if(b.dataset.matched == 3) setTimeout(()=>ham_bao_ket_qua(true), 1000);
                 } else {
                     ham_phat_sfx('wrong'); // Sai, tự rớt về
+                    const txt = dragged.innerText;
+                    ham_phat_am(txt);
                     document.getElementById('dd_drag_zone').appendChild(dragged);
                 }
                 dragged = null;
@@ -855,7 +1217,7 @@
             
             cards.forEach((c, idx) => {
                 const el = document.createElement('div');
-                el.className = 'mem-card'; el.dataset.id = c.id;
+                el.className = 'mem-card'; el.dataset.id = c.id; el.dataset.en = c.en;
                 el.innerHTML = `
                     <div class="mem-card-inner">
                         <div class="mem-front text-2xl shadow-neo"></div>
@@ -876,17 +1238,20 @@
                 secondCard = el; lock = true;
                 if(firstCard.dataset.id === secondCard.dataset.id) {
                     // Đúng cặp
-                    setTimeout(()=>{ ham_phat_am(word); ham_phao_hoa_nho(firstCard); ham_phao_hoa_nho(secondCard); }, 300);
+                    setTimeout(()=>{ ham_phat_sfx('correct'); ham_phao_hoa_nho(firstCard); ham_phao_hoa_nho(secondCard); }, 300);
+                    ham_phat_am(word);
                     firstCard.classList.add('matched'); secondCard.classList.add('matched');
                     firstCard = null; secondCard = null; lock = false;
                     pairs++;
-                    if(pairs === sl_cap) setTimeout(()=>{ ham_bao_ket_qua(true); }, 1500);
+                    if(pairs === sl_cap) setTimeout(()=>{ ham_bao_ket_qua(true); }, 2000);
                 } else {
                     // Sai
                     setTimeout(() => {
+                        const w = firstCard.dataset.en;
                         firstCard.classList.remove('flipped'); secondCard.classList.remove('flipped');
                         firstCard = null; secondCard = null; lock = false;
                         ham_phat_sfx('wrong');
+                        ham_phat_am(w);
                     }, 1000);
                 }
             }
@@ -894,6 +1259,156 @@
         function ham_phao_hoa_nho($el) {
             const rect = $el.getBoundingClientRect();
             confetti({ particleCount: 15, spread: 40, origin:{ x: (rect.left+rect.width/2)/window.innerWidth, y: (rect.top+rect.height/2)/window.innerHeight }, zIndex:999});
+        }
+
+        // --- STREAMING_CHUNK:Minigame 6, 7, 8 (Spelling, Connecting, Speed Quiz)... ---
+        function ham_game_danh_van(b) {
+            $game_cau_hoi = ham_ngau_nhien($tat_ca_tu.filter(x=>x.en && !x.en.includes(' ')), 1)[0]; // Chỉ chọn từ đơn
+            if(!$game_cau_hoi) { ham_thoat_game(); return; }
+            let word = $game_cau_hoi.en.toUpperCase();
+            let arr = word.split('');
+            let shuffled = ham_tron(arr);
+            
+            b.innerHTML = `
+                <div class="flex flex-col items-center justify-center w-full max-w-lg">
+                    <button onclick="ham_phat_am('${$game_cau_hoi.en}')" class="w-20 h-20 bg-indigo-500 text-white rounded-full text-4xl mb-4 shadow-neo active:scale-95 transition-all flex items-center justify-center"><i class="fa-solid fa-volume-high"></i></button>
+                    ${$game_cau_hoi.hex ? `<div class="w-24 h-24 rounded-full shadow-neo mb-6" style="background-color:${$game_cau_hoi.hex}"></div>` : `<div class="text-7xl drop-shadow-xl mb-6">${$game_cau_hoi.emj || ''}</div>`}
+                    <div id="word_slots" class="flex flex-wrap gap-2 mb-8 justify-center">
+                        ${arr.map(c => `<div class="w-12 h-14 border-b-4 border-indigo-300 flex items-center justify-center text-3xl font-black text-indigo-700 uppercase"></div>`).join('')}
+                    </div>
+                    <div id="keyboard" class="flex flex-wrap justify-center gap-2">
+                        ${shuffled.map((c, i) => `<button onclick="ham_nhap_chu(this, '${c}')" class="w-12 h-14 bg-white rounded-xl shadow-sm border-2 border-indigo-100 text-2xl font-black text-gray-700 active:bg-indigo-100 transition-all">${c}</button>`).join('')}
+                    </div>
+                </div>
+            `;
+            ham_phat_am($game_cau_hoi.en);
+
+            let currentPos = 0;
+            window.ham_nhap_chu = function(btn, char) {
+                if(btn.classList.contains('opacity-0')) return;
+                const slots = document.getElementById('word_slots').children;
+                if(currentPos < slots.length) {
+                    if(char === word[currentPos]) {
+                        // Đúng chữ cái
+                        slots[currentPos].innerText = char;
+                        btn.classList.add('opacity-0', 'pointer-events-none'); 
+                        currentPos++;
+                        ham_phat_sfx('pop');
+                        ham_phat_am(char); // Đọc chữ cái
+                        if(currentPos === slots.length) {
+                            setTimeout(() => ham_bao_ket_qua(true), 800);
+                        }
+                    } else {
+                        // Sai chữ cái
+                        ham_phat_sfx('wrong');
+                        btn.classList.add('bg-red-100', 'border-red-400', 'text-red-700', 'animate-wiggle');
+                        setTimeout(() => {
+                            btn.classList.remove('bg-red-100', 'border-red-400', 'text-red-700', 'animate-wiggle');
+                        }, 500);
+                    }
+                }
+            }
+        }
+
+        function ham_game_trac_nghiem(b) {
+            $game_cau_hoi = ham_ngau_nhien($tat_ca_tu, 1)[0];
+            const ops = ham_tron([$game_cau_hoi, ...ham_ngau_nhien($tat_ca_tu.filter(x=>x.id!==$game_cau_hoi.id), 3)]);
+            
+            b.innerHTML = `
+                <div class="w-full max-w-lg flex flex-col items-center">
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-6 shadow-inset overflow-hidden border border-gray-300">
+                        <div id="quiz_timer_bar" class="bg-red-500 h-full w-full transition-all duration-1000 ease-linear"></div>
+                    </div>
+                    <button onclick="ham_phat_am('${$game_cau_hoi.en}')" class="mb-4 text-gray-400 hover:text-blue-500 transition active:scale-95"><i class="fa-solid fa-volume-high text-3xl"></i></button>
+                    ${$game_cau_hoi.hex ? `<div class="w-32 h-32 rounded-full shadow-neo border-8 border-white mb-6" style="background-color:${$game_cau_hoi.hex}"></div>` : `<div class="text-8xl drop-shadow-xl mb-6">${$game_cau_hoi.emj || ''}</div>`}
+                    <div class="grid grid-cols-2 gap-4 w-full">
+                        ${ops.map(o => `<button onclick="ham_chon_trac_nghiem('${o.id}'==='${$game_cau_hoi.id}', '${o.en}')" class="py-6 bg-white rounded-2xl shadow-sm border-2 border-gray-100 hover:border-red-300 text-xl md:text-2xl font-black text-gray-700 active:translate-y-1 transition uppercase tracking-wide">${o.en}</button>`).join('')}
+                    </div>
+                </div>
+            `;
+            ham_phat_am($game_cau_hoi.en);
+
+            let timeleft = 100;
+            const bar = document.getElementById('quiz_timer_bar');
+            window.quiz_interval = setInterval(() => {
+                if(!document.getElementById('quiz_timer_bar')) { clearInterval(window.quiz_interval); return; }
+                timeleft -= 5; // 20 giây (5% mỗi giây)
+                bar.style.width = timeleft + '%';
+                if(timeleft <= 0) {
+                    clearInterval(window.quiz_interval);
+                    ham_bao_ket_qua(false);
+                }
+            }, 1000);
+
+            window.ham_chon_trac_nghiem = function(isWin, word) {
+                clearInterval(window.quiz_interval);
+                ham_phat_am(word); // Đọc từ bé vừa chọn
+                setTimeout(() => ham_bao_ket_qua(isWin), 500);
+            }
+        }
+
+        function ham_game_noi_tu(b) {
+            const pairs = ham_ngau_nhien($tat_ca_tu, 4);
+            const imgs = ham_tron(pairs.map(p => ({type:'img', id:p.id, emj:p.emj, hex:p.hex, en:p.en})));
+            const words = ham_tron(pairs.map(p => ({type:'word', id:p.id, text:p.en})));
+            
+            b.innerHTML = `
+                <div class="flex gap-8 md:gap-16 w-full max-w-2xl justify-center">
+                    <div class="flex flex-col gap-4" id="col_imgs">
+                        ${imgs.map(i => `<button onclick="ham_chon_noi_tu(this, '${i.id}', 'img')" class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-2xl shadow-sm border-4 border-white flex items-center justify-center text-4xl md:text-5xl hover:scale-105 transition-all" ${i.hex?`style="background-color:${i.hex}"`:''}>${i.emj||''}</button>`).join('')}
+                    </div>
+                    <div class="flex flex-col gap-4" id="col_words">
+                        ${words.map(w => `<button onclick="ham_chon_noi_tu(this, '${w.id}', 'word')" class="w-32 h-20 md:w-40 md:h-24 bg-white rounded-2xl shadow-sm border-4 border-white flex items-center justify-center text-lg md:text-xl font-black text-teal-700 hover:scale-105 transition-all uppercase">${w.text}</button>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            let selectedImg = null; let selectedWord = null;
+            let pairsLeft = 4;
+            window.ham_chon_noi_tu = function(btn, id, type) {
+                ham_phat_sfx('pop');
+                
+                // Đọc to tiếng Anh khi bé click vào hình hoặc chữ
+                const itemData = $tat_ca_tu.find(x => x.id === id);
+                if(itemData) ham_phat_am(itemData.en);
+
+                if(type === 'img') {
+                    if(selectedImg) selectedImg.classList.remove('border-teal-400', 'scale-110');
+                    selectedImg = btn; selectedImg.dataset.id = id;
+                    selectedImg.classList.add('border-teal-400', 'scale-110');
+                } else {
+                    if(selectedWord) selectedWord.classList.remove('border-teal-400', 'scale-110');
+                    selectedWord = btn; selectedWord.dataset.id = id;
+                    selectedWord.classList.add('border-teal-400', 'scale-110');
+                }
+                
+                if(selectedImg && selectedWord) {
+                    if(selectedImg.dataset.id === selectedWord.dataset.id) {
+                        ham_phat_sfx('correct');
+                        selectedImg.classList.replace('border-teal-400', 'border-green-400');
+                        selectedWord.classList.replace('border-teal-400', 'border-green-400');
+                        setTimeout(() => {
+                            selectedImg.classList.add('opacity-0', 'pointer-events-none');
+                            selectedWord.classList.add('opacity-0', 'pointer-events-none');
+                            selectedImg = null; selectedWord = null;
+                        }, 500);
+                        pairsLeft--;
+                        if(pairsLeft === 0) {
+                            setTimeout(() => ham_bao_ket_qua(true), 800);
+                        }
+                    } else {
+                        ham_phat_sfx('wrong');
+                        selectedImg.classList.replace('border-teal-400', 'border-red-400');
+                        selectedWord.classList.replace('border-teal-400', 'border-red-400');
+                        const sI = selectedImg; const sW = selectedWord;
+                        selectedImg = null; selectedWord = null;
+                        setTimeout(() => {
+                            if(sI) sI.classList.remove('border-red-400', 'scale-110');
+                            if(sW) sW.classList.remove('border-red-400', 'scale-110');
+                        }, 500);
+                    }
+                }
+            }
         }
 
         // --- STREAMING_CHUNK:Premium Game 5 (Canvas Drawing Pad)... ---
@@ -953,20 +1468,178 @@
             cvs.onmouseup = stop; cvs.onmouseout = stop; cvs.ontouchend = stop;
         }
 
+        // --- Premium Game 9 (Mystery Box) ---
+        function ham_game_hop_bi_mat(b) {
+            $game_cau_hoi = ham_ngau_nhien($tat_ca_tu, 1)[0];
+            const ops = ham_tron([$game_cau_hoi, ...ham_ngau_nhien($tat_ca_tu.filter(x=>x.id!==$game_cau_hoi.id), 2)]);
+            
+            b.innerHTML = `
+                <div class="relative w-48 h-48 md:w-64 md:h-64 mb-8 bg-white rounded-3xl shadow-neo flex items-center justify-center overflow-hidden border-8 border-fuchsia-100" ${$game_cau_hoi.hex ? `style="background-color:${$game_cau_hoi.hex}"`:''}>
+                    <div class="text-8xl md:text-9xl">${$game_cau_hoi.emj || ''}</div>
+                    
+                    <!-- Cover Grid -->
+                    <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 z-10" id="mystery_grid">
+                        <div class="bg-fuchsia-500 cursor-pointer hover:bg-fuchsia-400 transition" onclick="this.style.opacity=0; this.style.pointerEvents='none'; ham_phat_sfx('pop')"></div>
+                        <div class="bg-fuchsia-500 cursor-pointer hover:bg-fuchsia-400 transition" onclick="this.style.opacity=0; this.style.pointerEvents='none'; ham_phat_sfx('pop')"></div>
+                        <div class="bg-fuchsia-500 cursor-pointer hover:bg-fuchsia-400 transition" onclick="this.style.opacity=0; this.style.pointerEvents='none'; ham_phat_sfx('pop')"></div>
+                        <div class="bg-fuchsia-500 cursor-pointer hover:bg-fuchsia-400 transition" onclick="this.style.opacity=0; this.style.pointerEvents='none'; ham_phat_sfx('pop')"></div>
+                    </div>
+                </div>
+                
+                <p class="text-gray-400 font-bold mb-4 uppercase tracking-wider text-sm">Đoán xem đây là gì?</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl">
+                    ${ops.map(o => `<button onclick="ham_bao_ket_qua('${o.id}'==='${$game_cau_hoi.id}')" class="py-4 bg-white rounded-2xl shadow-sm border-4 border-white hover:border-fuchsia-300 text-xl md:text-2xl font-black text-gray-700 active:translate-y-1">${o.en}</button>`).join('')}
+                </div>
+            `;
+        }
+
+        // --- Premium Game 10 (Sorting Game) ---
+        function ham_game_phan_loai(b) {
+            const categories = Object.keys($du_lieu).filter(k => $du_lieu[k] && $du_lieu[k].length > 5 && k !== 'alphabet' && k !== 'numbers');
+            const catChoices = ham_ngau_nhien(categories, 2);
+            const cat1 = catChoices[0]; const cat2 = catChoices[1];
+            
+            const list1 = $du_lieu[cat1].slice(0, 5).map(x => ({...x, correctCat: cat1}));
+            const list2 = $du_lieu[cat2].slice(0, 5).map(x => ({...x, correctCat: cat2}));
+            const allItems = ham_tron([...list1, ...list2]);
+            
+            $game_cau_hoi = allItems[0]; // Item hiện tại cần sort
+            
+            const titleMap = {
+                'animals': 'Animals', 'fruits': 'Fruits', 'colors': 'Colors', 'vehicles': 'Vehicles', 'clothes': 'Clothes',
+                'body': 'Body Parts', 'food': 'Food', 'jobs': 'Jobs', 'house': 'House', 'school': 'School', 'sports': 'Sports',
+                'vegetables': 'Vegetables', 'space': 'Space', 'weather': 'Weather', 'flags': 'Flags', 'shapes': 'Shapes',
+                'toys': 'Toys', 'emotions': 'Emotions', 'actions': 'Actions', 'nature': 'Nature', 'insects': 'Insects',
+                'music': 'Music', 'places': 'Places', 'hobbies': 'Hobbies', 'tech': 'Tech'
+            };
+
+            b.innerHTML = `
+                <div class="text-6xl md:text-8xl mb-8 transform hover:scale-110 transition bg-white w-32 h-32 md:w-48 md:h-48 rounded-full shadow-neo flex items-center justify-center border-8 border-lime-100 cursor-pointer animate-float" onclick="ham_phat_am('${$game_cau_hoi.en}')">
+                    ${$game_cau_hoi.emj || ''}
+                </div>
+                
+                <h3 class="text-3xl font-black text-lime-700 mb-8 uppercase tracking-widest">${$game_cau_hoi.en}</h3>
+                
+                <div class="flex gap-8 md:gap-16 w-full max-w-2xl justify-center">
+                    <button onclick="ham_bao_ket_qua('${$game_cau_hoi.correctCat}'==='${cat1}')" class="flex-1 max-w-[200px] h-40 bg-white rounded-3xl shadow-neo border-4 border-white hover:border-lime-400 flex flex-col items-center justify-center active:translate-y-2 transition-all">
+                        <i class="fa-solid fa-basket-shopping text-5xl text-gray-300 mb-2"></i>
+                        <span class="font-black text-xl text-gray-700 uppercase">${titleMap[cat1]}</span>
+                    </button>
+                    
+                    <button onclick="ham_bao_ket_qua('${$game_cau_hoi.correctCat}'==='${cat2}')" class="flex-1 max-w-[200px] h-40 bg-white rounded-3xl shadow-neo border-4 border-white hover:border-lime-400 flex flex-col items-center justify-center active:translate-y-2 transition-all">
+                        <i class="fa-solid fa-basket-shopping text-5xl text-gray-300 mb-2"></i>
+                        <span class="font-black text-xl text-gray-700 uppercase">${titleMap[cat2]}</span>
+                    </button>
+                </div>
+            `;
+            ham_phat_am($game_cau_hoi.en);
+        }
+
+        // --- V3 Ultimate Features (AutoPlay & Pet) ---
+        let $auto_play_interval = null;
+        function ham_auto_play(forceStop = false) {
+            const btn = document.getElementById('btn_autoplay');
+            if ($auto_play_interval || forceStop) {
+                clearInterval($auto_play_interval);
+                $auto_play_interval = null;
+                btn.innerHTML = '<i class="fa-solid fa-play"></i> Chạy tự động';
+                btn.classList.remove('bg-purple-500', 'text-white');
+                btn.classList.add('bg-purple-100', 'text-purple-600');
+                return;
+            }
+            
+            btn.innerHTML = '<i class="fa-solid fa-stop"></i> Dừng Lại';
+            btn.classList.remove('bg-purple-100', 'text-purple-600');
+            btn.classList.add('bg-purple-500', 'text-white');
+            
+            const visibleSection = document.querySelector('.cat-sec:not(.hidden)');
+            if(!visibleSection) return;
+            const cards = Array.from(visibleSection.querySelectorAll('.flip-card, .simple-card'));
+            if(cards.length === 0) return;
+            
+            let currentIndex = 0;
+            // Fake event target to pass to ham_lat_the
+            const fakeEvent = { target: { tagName: 'DIV' } };
+            
+            const latTheHienTai = () => {
+                const card = cards[currentIndex];
+                const front = card.querySelector('.flip-card-front');
+                const word = front ? front.getAttribute('data-word') : card.getAttribute('data-word');
+                
+                // Highlight simple cards as they flip
+                if (card.classList.contains('simple-card')) {
+                    document.querySelectorAll('.simple-card').forEach(c => c.classList.remove('ring-4', 'ring-purple-400', 'scale-110'));
+                    card.classList.add('ring-4', 'ring-purple-400', 'scale-110');
+                }
+                
+                ham_lat_the(card, word, fakeEvent);
+            };
+            
+            latTheHienTai();
+            $auto_play_interval = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= cards.length) {
+                    // Xóa highlight của simple-card khi dừng
+                    document.querySelectorAll('.simple-card').forEach(c => c.classList.remove('ring-4', 'ring-purple-400', 'scale-110'));
+                    ham_auto_play(true);
+                    return;
+                }
+                latTheHienTai();
+            }, 3500);
+        }
+
+        const PET_CHEERS = ["You're so smart!", "Excellent!", "Awesome!", "Good job!", "Keep going!", "Fantastic!"];
+        function ham_pet_cheer() {
+            const bubble = document.getElementById('pet_bubble');
+            const pet = document.getElementById('pet_avatar');
+            if(!bubble || !pet) return;
+            
+            const cheer = ham_ngau_nhien(PET_CHEERS, 1)[0];
+            bubble.innerText = cheer;
+            bubble.classList.remove('opacity-0', 'scale-0');
+            ham_phat_am(cheer);
+            
+            pet.classList.add('animate-bounce');
+            
+            setTimeout(() => {
+                bubble.classList.add('opacity-0', 'scale-0');
+                pet.classList.remove('animate-bounce');
+            }, 3000);
+        }
+
         // --- STREAMING_CHUNK:App Initialization... ---
         window.onload = () => {
             ham_khoi_tao_data_tu_dong();
             ham_render_tat_ca();
             ham_cap_nhat_ui_he_thong();
-            ham_chuyen_tab('animals'); // Default tab
+            ham_ve_trang_chu(); // Default screen
             
             // Audio unlock for Mobile Safari/Chrome
-            document.body.addEventListener('touchstart', function() {
+            const unlockAudio = function() {
                 ['audio_correct','audio_wrong','audio_pop','audio_win','audio_level_up'].forEach(id=>{
                     let a = document.getElementById(id); if(a) { a.load(); a.volume=0; a.play().then(()=>a.pause()).catch(e=>{}); }
                 });
-            }, {once:true});
+                if ('speechSynthesis' in window) {
+                    let msg = new SpeechSynthesisUtterance('');
+                    msg.volume = 0;
+                    window.speechSynthesis.speak(msg);
+                }
+                document.body.removeEventListener('touchstart', unlockAudio);
+                document.body.removeEventListener('click', unlockAudio);
+            };
+            document.body.addEventListener('touchstart', unlockAudio, {once:true});
+            document.body.addEventListener('click', unlockAudio, {once:true});
         };
     </script>
+
+    <!-- Virtual Pet Cheerleader -->
+    <div id="pet_container" class="fixed bottom-4 right-4 z-40 flex flex-col items-end pointer-events-none">
+        <div id="pet_bubble" class="bg-white px-4 py-2 rounded-2xl rounded-br-none shadow-neo font-black text-pink-500 text-sm md:text-base mb-2 opacity-0 transform scale-0 transition-all origin-bottom-right pointer-events-auto border-2 border-pink-200">
+            Good Job!
+        </div>
+        <div id="pet_avatar" class="w-16 h-16 md:w-20 md:h-20 bg-pink-100 rounded-full border-4 border-white shadow-neo flex items-center justify-center text-4xl md:text-5xl cursor-pointer pointer-events-auto hover:scale-110 active:scale-95 transition-transform" onclick="ham_pet_cheer()">
+            🦄
+        </div>
+    </div>
 </body>
 </html>
