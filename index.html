@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bé Vui Học Tiếng Anh - Bản Nâng Cấp</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        'kid-blue': '#3b82f6',
+                        'kid-pink': '#ec4899',
+                        'kid-green': '#10b981',
+                        'kid-yellow': '#f59e0b',
+                        'kid-orange': '#f97316',
+                        'kid-purple': '#8b5cf6',
+                        'kid-red': '#ef4444',
+                    },
+                    boxShadow: {
+                        'kid-card': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #f0fdf4;
+            background-image: radial-gradient(#bbf7d0 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+        
+        .kid-hover-effect {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .kid-hover-effect:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .show-word .en-word {
+            display: block;
+            animation: bounceIn 0.5s;
+        }
+
+        .show-word .vi-word {
+            display: none;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.1); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-pop {
+            animation: pop 0.3s ease-in-out;
+        }
+
+        /* Tùy chỉnh thanh cuộn cho đẹp */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669; 
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans min-h-screen pb-20">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-kid-green">
+        <div class="max-w-7xl mx-auto px-2 py-3">
+            <div class="flex flex-col xl:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-kid-yellow rounded-full flex items-center justify-center text-white text-2xl shadow-sm">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-black text-kid-blue tracking-wide text-center">Bé Vui Học Tiếng Anh</h1>
+                </div>
+                
+                <nav class="flex flex-wrap justify-center gap-2">
+                    <button onclick="ham_chuyen_tab('alphabet')" class="nav-btn px-3 py-2 bg-purple-100 hover:bg-purple-500 hover:text-white text-purple-600 font-bold rounded-xl transition-colors border-2 border-purple-200">
+                        <i class="fa-solid fa-font mr-1"></i> ABC
+                    </button>
+                    <button onclick="ham_chuyen_tab('numbers')" class="nav-btn px-3 py-2 bg-orange-100 hover:bg-orange-500 hover:text-white text-orange-600 font-bold rounded-xl transition-colors border-2 border-orange-200">
+                        <i class="fa-solid fa-1 mr-1"></i> Số đếm
+                    </button>
+                    <button onclick="ham_chuyen_tab('animals')" class="nav-btn active px-3 py-2 bg-blue-100 hover:bg-blue-500 hover:text-white text-blue-600 font-bold rounded-xl transition-colors border-2 border-blue-200">
+                        <i class="fa-solid fa-cat mr-1"></i> Động vật
+                    </button>
+                    <button onclick="ham_chuyen_tab('fruits')" class="nav-btn px-3 py-2 bg-red-100 hover:bg-red-500 hover:text-white text-red-600 font-bold rounded-xl transition-colors border-2 border-red-200">
+                        <i class="fa-solid fa-apple-whole mr-1"></i> Trái cây
+                    </button>
+                    <button onclick="ham_chuyen_tab('colors')" class="nav-btn px-3 py-2 bg-pink-100 hover:bg-pink-500 hover:text-white text-pink-600 font-bold rounded-xl transition-colors border-2 border-pink-200">
+                        <i class="fa-solid fa-palette mr-1"></i> Màu sắc
+                    </button>
+                    <button onclick="ham_chuyen_tab('flags')" class="nav-btn px-3 py-2 bg-indigo-100 hover:bg-indigo-500 hover:text-white text-indigo-600 font-bold rounded-xl transition-colors border-2 border-indigo-200">
+                        <i class="fa-solid fa-flag mr-1"></i> Quốc kỳ
+                    </button>
+                    <button onclick="ham_chuyen_tab('quiz')" class="nav-btn px-4 py-2 bg-green-100 hover:bg-green-500 hover:text-white text-green-600 font-bold rounded-xl transition-colors border-2 border-green-200 ml-0 sm:ml-2 shadow-sm">
+                        <i class="fa-solid fa-gamepad mr-1 text-xl animate-pulse"></i> Trò chơi
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- Chủ đề: Bảng chữ cái -->
+        <section id="alphabet" class="category-section hidden">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-font"></i></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-purple-500 drop-shadow-sm">Bảng chữ cái (A-Z)</h2>
+            </div>
+            <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-4" id="khung_chu_cai"></div>
+        </section>
+
+        <!-- Chủ đề: Số đếm -->
+        <section id="numbers" class="category-section hidden">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-kid-orange rounded-full flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-1"></i></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-kid-orange drop-shadow-sm">Số đếm (1-300)</h2>
+            </div>
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3" id="khung_so_dem"></div>
+        </section>
+
+        <!-- Chủ đề: Động vật -->
+        <section id="animals" class="category-section">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-kid-blue rounded-full flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-cat"></i></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-kid-blue drop-shadow-sm">Động vật - Animals</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6" id="khung_dong_vat"></div>
+        </section>
+
+        <!-- Chủ đề: Trái cây & Rau củ -->
+        <section id="fruits" class="category-section hidden">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-kid-red rounded-full flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-apple-whole"></i></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-kid-red drop-shadow-sm">Trái cây - Fruits</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6" id="khung_trai_cay"></div>
+        </section>
+
+        <!-- Chủ đề: Màu sắc -->
+        <section id="colors" class="category-section hidden">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-kid-pink rounded-full flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-palette"></i></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-kid-pink drop-shadow-sm">Màu sắc - Colors</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6" id="khung_mau_sac"></div>
+        </section>
+
+        <!-- Chủ đề: Quốc kỳ -->
+        <section id="flags" class="category-section hidden">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-flag"></i></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-indigo-500 drop-shadow-sm">Quốc kỳ - Flags</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-5" id="khung_quoc_ky"></div>
+        </section>
+
+        <!-- Màn hình Quiz (Trò chơi) -->
+        <section id="quiz" class="category-section hidden max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-kid-card border-4 border-kid-green text-center">
+                
+                <!-- Màn hình chọn chế độ chơi -->
+                <div id="vung_chon_che_do">
+                    <i class="fa-solid fa-face-laugh-beam text-7xl text-kid-yellow mb-6 block drop-shadow-md"></i>
+                    <h2 class="text-4xl font-extrabold text-kid-green mb-4">Giờ Chơi Đến Rồi!</h2>
+                    <p class="text-xl text-gray-600 mb-8">Bé muốn chơi trò chơi nào?</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                        <button onclick="ham_bat_dau_tro_choi(1)" class="group relative px-6 py-8 bg-blue-50 border-4 border-blue-200 hover:bg-blue-100 hover:border-blue-400 rounded-3xl transition-all transform hover:-translate-y-2">
+                            <i class="fa-solid fa-ear-listen text-5xl text-blue-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                            <h3 class="text-2xl font-bold text-blue-700 mb-2">Nghe & Tìm Hình</h3>
+                            <p class="text-blue-500 font-semibold text-sm">Bé nghe tiếng Anh và chọn hình ảnh đúng nhé.</p>
+                        </button>
+                        
+                        <button onclick="ham_bat_dau_tro_choi(2)" class="group relative px-6 py-8 bg-purple-50 border-4 border-purple-200 hover:bg-purple-100 hover:border-purple-400 rounded-3xl transition-all transform hover:-translate-y-2">
+                            <i class="fa-solid fa-eye text-5xl text-purple-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                            <h3 class="text-2xl font-bold text-purple-700 mb-2">Nhìn Hình & Tìm Chữ</h3>
+                            <p class="text-purple-500 font-semibold text-sm">Bé nhìn hình và chọn chữ tiếng Anh đúng nhé.</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vùng hiển thị câu hỏi -->
+                <div id="vung_cau_hoi" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <button onclick="ham_quay_lai_menu_game()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl font-bold transition-colors">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Trở về
+                        </button>
+                        <div class="text-xl font-bold text-kid-orange bg-orange-100 px-4 py-2 rounded-xl border-2 border-orange-200">
+                            <i class="fa-solid fa-star text-yellow-500"></i> Điểm: <span id="diem_hien_tai">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Phần hiển thị đề bài (Chữ hoặc Hình) -->
+                    <div id="de_bai_container" class="mb-8 min-h-[150px] flex flex-col items-center justify-center">
+                        <!-- Nội dung đề bài sẽ được gen bằng JS -->
+                    </div>
+                    
+                    <!-- Phần hiển thị đáp án (Lưới 4 nút) -->
+                    <div class="grid grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto" id="khung_dap_an">
+                        <!-- Nút đáp án được tạo bởi JS -->
+                    </div>
+                </div>
+
+                <!-- Hiển thị kết quả -->
+                <div id="vung_thong_bao" class="mt-8 text-3xl font-extrabold hidden h-12"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Script xử lý Logic -->
+    <script>
+        // --- DỮ LIỆU TỪ VỰNG MỞ RỘNG ---
+        const $du_lieu_tu_vung = {
+            animals: [
+                { id: 'dog', wordEn: 'Dog', wordVi: 'Con Chó', emoji: '🐶' },
+                { id: 'cat', wordEn: 'Cat', wordVi: 'Con Mèo', emoji: '🐱' },
+                { id: 'mouse', wordEn: 'Mouse', wordVi: 'Con Chuột', emoji: '🐭' },
+                { id: 'rabbit', wordEn: 'Rabbit', wordVi: 'Con Thỏ', emoji: '🐰' },
+                { id: 'bear', wordEn: 'Bear', wordVi: 'Con Gấu', emoji: '🐻' },
+                { id: 'panda', wordEn: 'Panda', wordVi: 'Gấu Trúc', emoji: '🐼' },
+                { id: 'koala', wordEn: 'Koala', wordVi: 'Gấu Koala', emoji: '🐨' },
+                { id: 'tiger', wordEn: 'Tiger', wordVi: 'Con Hổ', emoji: '🐯' },
+                { id: 'lion', wordEn: 'Lion', wordVi: 'Sư Tử', emoji: '🦁' },
+                { id: 'cow', wordEn: 'Cow', wordVi: 'Con Bò', emoji: '🐮' },
+                { id: 'pig', wordEn: 'Pig', wordVi: 'Con Heo', emoji: '🐷' },
+                { id: 'frog', wordEn: 'Frog', wordVi: 'Con Ếch', emoji: '🐸' },
+                { id: 'monkey', wordEn: 'Monkey', wordVi: 'Con Khỉ', emoji: '🐒' },
+                { id: 'chicken', wordEn: 'Chicken', wordVi: 'Con Gà', emoji: '🐔' },
+                { id: 'duck', wordEn: 'Duck', wordVi: 'Con Vịt', emoji: '🦆' },
+                { id: 'turtle', wordEn: 'Turtle', wordVi: 'Con Rùa', emoji: '🐢' },
+                { id: 'snake', wordEn: 'Snake', wordVi: 'Con Rắn', emoji: '🐍' },
+                { id: 'horse', wordEn: 'Horse', wordVi: 'Con Ngựa', emoji: '🐴' },
+                { id: 'sheep', wordEn: 'Sheep', wordVi: 'Con Cừu', emoji: '🐑' },
+                { id: 'goat', wordEn: 'Goat', wordVi: 'Con Dê', emoji: '🐐' },
+                { id: 'elephant', wordEn: 'Elephant', wordVi: 'Con Voi', emoji: '🐘' },
+                { id: 'rhino', wordEn: 'Rhino', wordVi: 'Tê Giác', emoji: '🦏' },
+                { id: 'hippo', wordEn: 'Hippo', wordVi: 'Hà Mã', emoji: '🦛' },
+                { id: 'giraffe', wordEn: 'Giraffe', wordVi: 'Hươu Cao Cổ', emoji: '🦒' },
+                { id: 'kangaroo', wordEn: 'Kangaroo', wordVi: 'Kangaroo', emoji: '🦘' },
+                { id: 'crocodile', wordEn: 'Crocodile', wordVi: 'Cá Sấu', emoji: '🐊' },
+                { id: 'penguin', wordEn: 'Penguin', wordVi: 'Chim Cánh Cụt', emoji: '🐧' },
+                { id: 'shark', wordEn: 'Shark', wordVi: 'Cá Mập', emoji: '🦈' },
+                { id: 'whale', wordEn: 'Whale', wordVi: 'Cá Voi', emoji: '🐳' },
+                { id: 'dolphin', wordEn: 'Dolphin', wordVi: 'Cá Heo', emoji: '🐬' },
+                { id: 'butterfly', wordEn: 'Butterfly', wordVi: 'Con Bướm', emoji: '🦋' },
+                { id: 'bee', wordEn: 'Bee', wordVi: 'Con Ong', emoji: '🐝' }
+            ],
+            fruits: [
+                { id: 'apple', wordEn: 'Apple', wordVi: 'Quả Táo', emoji: '🍎' },
+                { id: 'banana', wordEn: 'Banana', wordVi: 'Quả Chuối', emoji: '🍌' },
+                { id: 'orange_fruit', wordEn: 'Orange', wordVi: 'Quả Cam', emoji: '🍊' },
+                { id: 'grape', wordEn: 'Grape', wordVi: 'Quả Nho', emoji: '🍇' },
+                { id: 'strawberry', wordEn: 'Strawberry', wordVi: 'Dâu Tây', emoji: '🍓' },
+                { id: 'watermelon', wordEn: 'Watermelon', wordVi: 'Dưa Hấu', emoji: '🍉' },
+                { id: 'melon', wordEn: 'Melon', wordVi: 'Dưa Lưới', emoji: '🍈' },
+                { id: 'cherry', wordEn: 'Cherry', wordVi: 'Quả Anh Đào', emoji: '🍒' },
+                { id: 'peach', wordEn: 'Peach', wordVi: 'Quả Đào', emoji: '🍑' },
+                { id: 'mango', wordEn: 'Mango', wordVi: 'Quả Xoài', emoji: '🥭' },
+                { id: 'pineapple', wordEn: 'Pineapple', wordVi: 'Quả Dứa', emoji: '🍍' },
+                { id: 'coconut', wordEn: 'Coconut', wordVi: 'Trái Dừa', emoji: '🥥' },
+                { id: 'kiwi', wordEn: 'Kiwi', wordVi: 'Quả Kiwi', emoji: '🥝' },
+                { id: 'tomato', wordEn: 'Tomato', wordVi: 'Cà Chua', emoji: '🍅' },
+                { id: 'eggplant', wordEn: 'Eggplant', wordVi: 'Cà Tím', emoji: '🍆' },
+                { id: 'carrot', wordEn: 'Carrot', wordVi: 'Củ Cà Rốt', emoji: '🥕' },
+                { id: 'corn', wordEn: 'Corn', wordVi: 'Bắp / Ngô', emoji: '🌽' },
+                { id: 'broccoli', wordEn: 'Broccoli', wordVi: 'Bông Cải Xanh', emoji: '🥦' },
+                { id: 'mushroom', wordEn: 'Mushroom', wordVi: 'Cây Nấm', emoji: '🍄' },
+                { id: 'potato', wordEn: 'Potato', wordVi: 'Khoai Tây', emoji: '🥔' }
+            ],
+            colors: [
+                { id: 'red', wordEn: 'Red', wordVi: 'Màu Đỏ', hex: '#ef4444' },
+                { id: 'blue', wordEn: 'Blue', wordVi: 'Xanh Dương', hex: '#3b82f6' },
+                { id: 'green', wordEn: 'Green', wordVi: 'Xanh Lá', hex: '#10b981' },
+                { id: 'yellow', wordEn: 'Yellow', wordVi: 'Màu Vàng', hex: '#fadd02' },
+                { id: 'orange', wordEn: 'Orange', wordVi: 'Màu Cam', hex: '#f97316' },
+                { id: 'purple', wordEn: 'Purple', wordVi: 'Màu Tím', hex: '#8b5cf6' },
+                { id: 'pink', wordEn: 'Pink', wordVi: 'Màu Hồng', hex: '#ec4899' },
+                { id: 'black', wordEn: 'Black', wordVi: 'Màu Đen', hex: '#1f2937' },
+                { id: 'white', wordEn: 'White', wordVi: 'Màu Trắng', hex: '#ffffff' },
+                { id: 'brown', wordEn: 'Brown', wordVi: 'Màu Nâu', hex: '#8B4513' },
+                { id: 'gray', wordEn: 'Gray', wordVi: 'Màu Xám', hex: '#6b7280' },
+                { id: 'cyan', wordEn: 'Cyan', wordVi: 'Xanh Lơ', hex: '#06b6d4' }
+            ],
+            flags: [
+                // Châu Á
+                { id: 'flag_vn', wordEn: 'Vietnam', wordVi: 'Việt Nam', emoji: '🇻🇳' },
+                { id: 'flag_jp', wordEn: 'Japan', wordVi: 'Nhật Bản', emoji: '🇯🇵' },
+                { id: 'flag_kr', wordEn: 'South Korea', wordVi: 'Hàn Quốc', emoji: '🇰🇷' },
+                { id: 'flag_cn', wordEn: 'China', wordVi: 'Trung Quốc', emoji: '🇨🇳' },
+                { id: 'flag_in', wordEn: 'India', wordVi: 'Ấn Độ', emoji: '🇮🇳' },
+                { id: 'flag_th', wordEn: 'Thailand', wordVi: 'Thái Lan', emoji: '🇹🇭' },
+                { id: 'flag_sg', wordEn: 'Singapore', wordVi: 'Singapore', emoji: '🇸🇬' },
+                { id: 'flag_my', wordEn: 'Malaysia', wordVi: 'Malaysia', emoji: '🇲🇾' },
+                { id: 'flag_id', wordEn: 'Indonesia', wordVi: 'Indonesia', emoji: '🇮🇩' },
+                { id: 'flag_ph', wordEn: 'Philippines', wordVi: 'Philippines', emoji: '🇵🇭' },
+                { id: 'flag_sa', wordEn: 'Saudi Arabia', wordVi: 'Ả Rập Xê Út', emoji: '🇸🇦' },
+                { id: 'flag_ae', wordEn: 'UAE', wordVi: 'UAE', emoji: '🇦🇪' },
+                // Châu Âu
+                { id: 'flag_uk', wordEn: 'United Kingdom', wordVi: 'Anh Quốc', emoji: '🇬🇧' },
+                { id: 'flag_fr', wordEn: 'France', wordVi: 'Pháp', emoji: '🇫🇷' },
+                { id: 'flag_de', wordEn: 'Germany', wordVi: 'Đức', emoji: '🇩🇪' },
+                { id: 'flag_it', wordEn: 'Italy', wordVi: 'Ý', emoji: '🇮🇹' },
+                { id: 'flag_es', wordEn: 'Spain', wordVi: 'Tây Ban Nha', emoji: '🇪🇸' },
+                { id: 'flag_pt', wordEn: 'Portugal', wordVi: 'Bồ Đào Nha', emoji: '🇵🇹' },
+                { id: 'flag_ru', wordEn: 'Russia', wordVi: 'Nga', emoji: '🇷🇺' },
+                { id: 'flag_nl', wordEn: 'Netherlands', wordVi: 'Hà Lan', emoji: '🇳🇱' },
+                { id: 'flag_ch', wordEn: 'Switzerland', wordVi: 'Thụy Sĩ', emoji: '🇨🇭' },
+                { id: 'flag_se', wordEn: 'Sweden', wordVi: 'Thụy Điển', emoji: '🇸🇪' },
+                { id: 'flag_no', wordEn: 'Norway', wordVi: 'Na Uy', emoji: '🇳🇴' },
+                { id: 'flag_dk', wordEn: 'Denmark', wordVi: 'Đan Mạch', emoji: '🇩🇰' },
+                { id: 'flag_fi', wordEn: 'Finland', wordVi: 'Phần Lan', emoji: '🇫🇮' },
+                { id: 'flag_tr', wordEn: 'Turkey', wordVi: 'Thổ Nhĩ Kỳ', emoji: '🇹🇷' },
+                { id: 'flag_gr', wordEn: 'Greece', wordVi: 'Hy Lạp', emoji: '🇬🇷' },
+                // Châu Mỹ
+                { id: 'flag_us', wordEn: 'United States', wordVi: 'Mỹ', emoji: '🇺🇸' },
+                { id: 'flag_ca', wordEn: 'Canada', wordVi: 'Canada', emoji: '🇨🇦' },
+                { id: 'flag_mx', wordEn: 'Mexico', wordVi: 'Mexico', emoji: '🇲🇽' },
+                { id: 'flag_br', wordEn: 'Brazil', wordVi: 'Brazil', emoji: '🇧🇷' },
+                { id: 'flag_ar', wordEn: 'Argentina', wordVi: 'Argentina', emoji: '🇦🇷' },
+                { id: 'flag_co', wordEn: 'Colombia', wordVi: 'Colombia', emoji: '🇨🇴' },
+                { id: 'flag_pe', wordEn: 'Peru', wordVi: 'Peru', emoji: '🇵🇪' },
+                { id: 'flag_cl', wordEn: 'Chile', wordVi: 'Chile', emoji: '🇨🇱' },
+                { id: 'flag_cu', wordEn: 'Cuba', wordVi: 'Cuba', emoji: '🇨🇺' },
+                // Châu Úc & Phi
+                { id: 'flag_au', wordEn: 'Australia', wordVi: 'Úc', emoji: '🇦🇺' },
+                { id: 'flag_nz', wordEn: 'New Zealand', wordVi: 'New Zealand', emoji: '🇳🇿' },
+                { id: 'flag_za', wordEn: 'South Africa', wordVi: 'Nam Phi', emoji: '🇿🇦' },
+                { id: 'flag_eg', wordEn: 'Egypt', wordVi: 'Ai Cập', emoji: '🇪🇬' },
+                { id: 'flag_ng', wordEn: 'Nigeria', wordVi: 'Nigeria', emoji: '🇳🇬' },
+                { id: 'flag_ke', wordEn: 'Kenya', wordVi: 'Kenya', emoji: '🇰🇪' }
+            ],
+            alphabet: [],
+            numbers: []
+        };
+
+        // --- CÁC HÀM TIỆN ÍCH TẠO DỮ LIỆU TỰ ĐỘNG ---
+
+        function ham_doc_so_tieng_anh($so) {
+            const $tu_0_den_19 = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+            const $hang_chuc = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+            if ($so < 20) return $tu_0_den_19[$so];
+            if ($so < 100) return $hang_chuc[Math.floor($so / 10)] + ($so % 10 !== 0 ? '-' + $tu_0_den_19[$so % 10].toLowerCase() : '');
+            if ($so <= 300) {
+                let $chu = $tu_0_den_19[Math.floor($so / 100)] + ' hundred';
+                let $phan_du = $so % 100;
+                if ($phan_du !== 0) {
+                    $chu += ' and ' + ham_doc_so_tieng_anh($phan_du).toLowerCase();
+                }
+                return $chu.charAt(0).toUpperCase() + $chu.slice(1);
+            }
+            return '';
+        }
+
+        function ham_tao_danh_sach_so() {
+            const $mang_mau = [
+                'bg-red-50 border-red-200 text-red-600', 'bg-orange-50 border-orange-200 text-orange-600',
+                'bg-yellow-50 border-yellow-200 text-yellow-600', 'bg-green-50 border-green-200 text-green-600',
+                'bg-blue-50 border-blue-200 text-blue-600', 'bg-indigo-50 border-indigo-200 text-indigo-600',
+                'bg-purple-50 border-purple-200 text-purple-600', 'bg-pink-50 border-pink-200 text-pink-600'
+            ];
+            for (let $so = 1; $so <= 300; $so++) {
+                $du_lieu_tu_vung.numbers.push({
+                    id: 'num_' + $so,
+                    wordEn: ham_doc_so_tieng_anh($so),
+                    wordVi: 'Số ' + $so,
+                    emoji: $so,
+                    color: $mang_mau[($so - 1) % $mang_mau.length]
+                });
+            }
+        }
+
+        function ham_tao_bang_chu_cai() {
+            const $bang_chu_cai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const $mang_mau = [
+                'bg-red-50 border-red-200 text-red-600', 'bg-orange-50 border-orange-200 text-orange-600',
+                'bg-yellow-50 border-yellow-200 text-yellow-600', 'bg-green-50 border-green-200 text-green-600',
+                'bg-blue-50 border-blue-200 text-blue-600', 'bg-indigo-50 border-indigo-200 text-indigo-600',
+                'bg-purple-50 border-purple-200 text-purple-600', 'bg-pink-50 border-pink-200 text-pink-600'
+            ];
+            for (let $i = 0; $i < $bang_chu_cai.length; $i++) {
+                let $chu_cai = $bang_chu_cai[$i];
+                $du_lieu_tu_vung.alphabet.push({
+                    id: 'alpha_' + $chu_cai,
+                    wordEn: $chu_cai,
+                    wordVi: 'Chữ ' + $chu_cai,
+                    emoji: $chu_cai,
+                    color: $mang_mau[$i % $mang_mau.length]
+                });
+            }
+        }
+
+        let $tat_ca_tu_vung = [];
+
+        // --- HÀM XỬ LÝ GIAO DIỆN VÀ ÂM THANH ---
+
+        function ham_phat_am($tu_tieng_anh, $phan_tu_html) {
+            if ($phan_tu_html) {
+                $phan_tu_html.classList.add('animate-pop', 'show-word');
+                setTimeout(() => {
+                    $phan_tu_html.classList.remove('animate-pop');
+                    setTimeout(() => {
+                        $phan_tu_html.classList.remove('show-word');
+                    }, 2000);
+                }, 300);
+            }
+
+            if ('speechSynthesis' in window) {
+                // Cancel previous speech to avoid overlapping
+                window.speechSynthesis.cancel();
+                const $giong_doc = new SpeechSynthesisUtterance($tu_tieng_anh);
+                $giong_doc.lang = 'en-US';
+                $giong_doc.rate = 0.85; 
+                $giong_doc.pitch = 1.1; 
+                window.speechSynthesis.speak($giong_doc);
+            }
+        }
+
+        // Tạo thẻ (card) chuẩn để dùng chung cho Động vật và Trái cây
+        function ham_tao_the_html($du_lieu, $mau_sac_vien, $mau_sac_chu) {
+            return `
+                <div onclick="ham_phat_am('${$du_lieu.wordEn}', this)" class="kid-hover-effect cursor-pointer bg-white rounded-3xl p-4 md:p-6 shadow-kid-card border-4 border-${$mau_sac_vien}-100 hover:border-${$mau_sac_vien}-300 flex flex-col items-center justify-center relative overflow-hidden group min-h-[140px] md:min-h-[180px]">
+                    <div class="text-6xl md:text-7xl mb-2 md:mb-4 transform group-hover:scale-110 transition-transform drop-shadow-md">${$du_lieu.emoji}</div>
+                    <h3 class="text-xl md:text-2xl font-black text-gray-800 z-10 hidden en-word text-center">${$du_lieu.wordEn}</h3>
+                    <p class="text-sm md:text-base text-gray-500 font-bold z-10 vi-word text-center">${$du_lieu.wordVi}</p>
+                    <div class="absolute top-2 right-2 md:top-3 md:right-3 text-${$mau_sac_chu}-400 opacity-40 group-hover:opacity-100"><i class="fa-solid fa-volume-up text-lg md:text-xl"></i></div>
+                </div>
+            `;
+        }
+
+        function ham_hien_thi_giao_dien() {
+            // Render Bảng chữ cái
+            document.getElementById('khung_chu_cai').innerHTML = $du_lieu_tu_vung.alphabet.map($chu => `
+                <div onclick="ham_phat_am('${$chu.wordEn}', this)" class="kid-hover-effect cursor-pointer bg-white rounded-2xl p-2 shadow-sm hover:shadow-md border-2 border-purple-100 flex flex-col items-center justify-center min-h-[100px] md:min-h-[120px] relative overflow-hidden group">
+                    <div class="absolute inset-0 opacity-10 ${$chu.color.split(' ')[0]} z-0"></div>
+                    <div class="text-4xl md:text-6xl font-black z-10 text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-pink-500 transform group-hover:scale-110 transition-transform duration-300">${$chu.emoji}</div>
+                    <h3 class="text-xs md:text-sm font-bold text-gray-800 z-10 hidden en-word text-center px-1 mt-2 uppercase">${$chu.wordEn}</h3>
+                    <p class="text-[0.65rem] md:text-xs text-gray-500 font-semibold z-10 vi-word hidden group-hover:block mt-1">${$chu.wordVi}</p>
+                    <div class="absolute top-1 right-1 text-purple-400 opacity-50 group-hover:opacity-100 z-10 text-xs"><i class="fa-solid fa-volume-up"></i></div>
+                </div>
+            `).join('');
+
+            // Render Số đếm
+            document.getElementById('khung_so_dem').innerHTML = $du_lieu_tu_vung.numbers.map($so => `
+                <div onclick="ham_phat_am('${$so.wordEn}', this)" class="kid-hover-effect cursor-pointer bg-white rounded-xl p-2 shadow-sm hover:shadow-md border-2 border-orange-100 flex flex-col items-center justify-center min-h-[80px] md:min-h-[100px] relative overflow-hidden group">
+                    <div class="absolute inset-0 opacity-20 ${$so.color.split(' ')[0]} z-0"></div>
+                    <div class="text-2xl md:text-4xl font-black z-10 text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-red-500 transform group-hover:scale-110 transition-transform duration-300">${$so.emoji}</div>
+                    <h3 class="text-[0.65rem] md:text-sm font-bold text-gray-800 z-10 hidden en-word text-center px-1 leading-tight mt-1">${$so.wordEn}</h3>
+                    <p class="text-[0.6rem] md:text-xs text-gray-500 font-semibold z-10 vi-word hidden group-hover:block mt-1">${$so.wordVi}</p>
+                </div>
+            `).join('');
+
+            // Render Động vật & Trái cây
+            document.getElementById('khung_dong_vat').innerHTML = $du_lieu_tu_vung.animals.map($item => ham_tao_the_html($item, 'blue', 'blue')).join('');
+            document.getElementById('khung_trai_cay').innerHTML = $du_lieu_tu_vung.fruits.map($item => ham_tao_the_html($item, 'red', 'red')).join('');
+
+            // Render Màu sắc
+            document.getElementById('khung_mau_sac').innerHTML = $du_lieu_tu_vung.colors.map($mau => `
+                <div onclick="ham_phat_am('${$mau.wordEn}', this)" class="kid-hover-effect cursor-pointer bg-white rounded-3xl p-4 shadow-kid-card border-4 border-gray-100 hover:border-gray-300 flex flex-col items-center justify-center min-h-[140px] md:min-h-[160px] relative overflow-hidden group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full mb-3 shadow-md border-4 border-white z-10 transform group-hover:scale-110 transition-transform ${$mau.id === 'white' ? 'border-gray-200' : ''}" style="background-color: ${$mau.hex}"></div>
+                    <h3 class="text-xl md:text-2xl font-black text-gray-800 z-10 hidden en-word">${$mau.wordEn}</h3>
+                    <p class="text-sm md:text-lg text-gray-500 font-bold z-10 vi-word">${$mau.wordVi}</p>
+                    <div class="absolute top-2 right-2 text-gray-400 opacity-40 group-hover:opacity-100 z-10"><i class="fa-solid fa-volume-up"></i></div>
+                </div>
+            `).join('');
+
+            // Render Quốc kỳ
+            document.getElementById('khung_quoc_ky').innerHTML = $du_lieu_tu_vung.flags.map($co => `
+                <div onclick="ham_phat_am('${$co.wordEn}', this)" class="kid-hover-effect cursor-pointer bg-white rounded-3xl p-3 shadow-kid-card border-4 border-indigo-50 hover:border-indigo-200 flex flex-col items-center justify-center min-h-[130px] md:min-h-[150px] relative overflow-hidden group">
+                    <div class="text-6xl md:text-7xl mb-2 transform group-hover:scale-110 transition-transform drop-shadow-md leading-none">${$co.emoji}</div>
+                    <h3 class="text-base md:text-lg font-black text-gray-800 z-10 hidden en-word text-center leading-tight">${$co.wordEn}</h3>
+                    <p class="text-[0.7rem] md:text-sm text-gray-500 font-bold z-10 vi-word text-center leading-tight mt-1">${$co.wordVi}</p>
+                </div>
+            `).join('');
+        }
+
+        function ham_chuyen_tab($id_tab) {
+            document.querySelectorAll('.category-section').forEach($phan => {
+                $phan.classList.add('hidden');
+            });
+            document.querySelectorAll('.nav-btn').forEach($nut => {
+                $nut.classList.remove('ring-4', 'ring-opacity-50');
+            });
+            
+            document.getElementById($id_tab).classList.remove('hidden');
+            
+            const $nut_dang_chon = Array.from(document.querySelectorAll('.nav-btn')).find($nut => $nut.getAttribute('onclick').includes($id_tab));
+            if ($nut_dang_chon) {
+                $nut_dang_chon.classList.add('ring-4', 'ring-opacity-50');
+                if($id_tab === 'animals') $nut_dang_chon.classList.add('ring-blue-400');
+                if($id_tab === 'fruits') $nut_dang_chon.classList.add('ring-red-400');
+                if($id_tab === 'colors') $nut_dang_chon.classList.add('ring-pink-400');
+                if($id_tab === 'numbers') $nut_dang_chon.classList.add('ring-orange-400');
+                if($id_tab === 'flags') $nut_dang_chon.classList.add('ring-indigo-400');
+                if($id_tab === 'alphabet') $nut_dang_chon.classList.add('ring-purple-400');
+                if($id_tab === 'quiz') $nut_dang_chon.classList.add('ring-green-400');
+            }
+
+            // Nếu ra khỏi tab quiz, reset lại trạng thái menu quiz
+            if($id_tab !== 'quiz') {
+                ham_quay_lai_menu_game();
+            }
+        }
+
+        // --- HÀM XỬ LÝ TRÒ CHƠI (QUIZ) ---
+        let $tu_cau_hoi_hien_tai = null;
+        let $diem_so = 0;
+        let $che_do_choi = 1; // 1: Tìm Hình, 2: Tìm Chữ
+
+        function ham_lay_phan_tu_ngau_nhien($mang, $so_luong) {
+            const $mang_sao_chep = [...$mang];
+            const $ket_qua = [];
+            for (let $i = 0; $i < $so_luong; $i++) {
+                if ($mang_sao_chep.length === 0) break;
+                const $chi_so = Math.floor(Math.random() * $mang_sao_chep.length);
+                $ket_qua.push($mang_sao_chep.splice($chi_so, 1)[0]);
+            }
+            return $ket_qua;
+        }
+
+        function ham_tron_mang($mang) {
+            for (let $i = $mang.length - 1; $i > 0; $i--) {
+                const $j = Math.floor(Math.random() * ($i + 1));
+                [$mang[$i], $mang[$j]] = [$mang[$j], $mang[$i]];
+            }
+            return $mang;
+        }
+
+        function ham_bat_dau_tro_choi($che_do) {
+            $che_do_choi = $che_do;
+            $diem_so = 0;
+            document.getElementById('diem_hien_tai').textContent = $diem_so;
+            
+            document.getElementById('vung_chon_che_do').classList.add('hidden');
+            document.getElementById('vung_cau_hoi').classList.remove('hidden');
+            document.getElementById('vung_thong_bao').classList.add('hidden');
+            ham_tao_cau_hoi_moi();
+        }
+
+        function ham_quay_lai_menu_game() {
+            document.getElementById('vung_chon_che_do').classList.remove('hidden');
+            document.getElementById('vung_cau_hoi').classList.add('hidden');
+            document.getElementById('vung_thong_bao').classList.add('hidden');
+        }
+
+        function ham_tao_nhao_nut_dap_an($lua_chon, $loai_hien_thi) {
+            const $nut_bam = document.createElement('button');
+            
+            if ($loai_hien_thi === 'hinh') {
+                // Hiển thị Hình/Màu
+                if ($lua_chon.hex) {
+                    $nut_bam.className = 'h-32 md:h-40 rounded-3xl shadow-md transform hover:scale-105 transition-transform border-4 border-gray-100 hover:border-gray-300';
+                    $nut_bam.style.backgroundColor = $lua_chon.hex;
+                } else if ($lua_chon.id.startsWith('alpha_') || $lua_chon.id.startsWith('num_')) {
+                    $nut_bam.className = `h-32 md:h-40 bg-white rounded-3xl shadow-md transform hover:scale-105 transition-transform text-6xl md:text-7xl font-black border-4 flex items-center justify-center ${$lua_chon.color ? $lua_chon.color.split(' ')[1] : 'border-gray-200'} text-gray-800`;
+                    $nut_bam.innerHTML = $lua_chon.emoji;
+                } else {
+                    $nut_bam.className = 'h-32 md:h-40 bg-white rounded-3xl shadow-md transform hover:scale-105 transition-transform text-6xl md:text-7xl border-4 border-gray-100 hover:border-gray-300 flex items-center justify-center drop-shadow-sm';
+                    $nut_bam.textContent = $lua_chon.emoji;
+                }
+            } else {
+                // Hiển thị Chữ
+                $nut_bam.className = 'h-24 md:h-32 bg-white rounded-3xl shadow-md transform hover:scale-105 transition-transform text-2xl md:text-4xl font-black text-gray-800 border-4 border-blue-100 hover:border-blue-400 flex items-center justify-center';
+                $nut_bam.textContent = $lua_chon.wordEn;
+            }
+            
+            $nut_bam.onclick = () => ham_kiem_tra_ket_qua($lua_chon.id);
+            return $nut_bam;
+        }
+
+        function ham_tao_cau_hoi_moi() {
+            const $vung_thong_bao = document.getElementById('vung_thong_bao');
+            $vung_thong_bao.classList.add('hidden');
+            $vung_thong_bao.textContent = '';
+
+            // Bỏ đi numbers và alphabet ra khỏi pool cho game nhìn hình tìm chữ (vì chữ và hình giống nhau)
+            let $pool_tu_vung = $tat_ca_tu_vung;
+            if ($che_do_choi === 2) {
+                $pool_tu_vung = [...$du_lieu_tu_vung.animals, ...$du_lieu_tu_vung.fruits, ...$du_lieu_tu_vung.colors, ...$du_lieu_tu_vung.flags];
+            }
+
+            // Chọn 1 đáp án đúng
+            $tu_cau_hoi_hien_tai = ham_lay_phan_tu_ngau_nhien($pool_tu_vung, 1)[0];
+            
+            // Chọn 3 đáp án sai
+            const $danh_sach_con_lai = $pool_tu_vung.filter($tu => $tu.id !== $tu_cau_hoi_hien_tai.id);
+            const $cac_dap_an_sai = ham_lay_phan_tu_ngau_nhien($danh_sach_con_lai, 3);
+            
+            let $cac_lua_chon = ham_tron_mang([$tu_cau_hoi_hien_tai, ...$cac_dap_an_sai]);
+            
+            const $vung_de_bai = document.getElementById('de_bai_container');
+            const $khung_dap_an = document.getElementById('khung_dap_an');
+            $vung_de_bai.innerHTML = '';
+            $khung_dap_an.innerHTML = '';
+
+            if ($che_do_choi === 1) {
+                // CHẾ ĐỘ 1: ĐỀ BÀI LÀ CHỮ/ÂM THANH - ĐÁP ÁN LÀ HÌNH
+                $vung_de_bai.innerHTML = `
+                    <button onclick="ham_phat_am_cau_hoi()" class="w-24 h-24 bg-blue-100 hover:bg-blue-200 text-blue-500 rounded-full text-5xl flex items-center justify-center mb-6 shadow-sm transform hover:scale-105 active:scale-95 transition-all">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <p class="text-3xl font-bold text-gray-700">Đâu là <span class="text-kid-blue text-4xl font-black mx-2 border-b-4 border-kid-blue border-dotted"> ${$tu_cau_hoi_hien_tai.wordEn} </span> ?</p>
+                `;
+                
+                $cac_lua_chon.forEach($lua_chon => {
+                    $khung_dap_an.appendChild(ham_tao_nhao_nut_dap_an($lua_chon, 'hinh'));
+                });
+
+            } else {
+                // CHẾ ĐỘ 2: ĐỀ BÀI LÀ HÌNH - ĐÁP ÁN LÀ CHỮ
+                let $hinh_anh_html = '';
+                if ($tu_cau_hoi_hien_tai.hex) {
+                    $hinh_anh_html = `<div class="w-32 h-32 rounded-full shadow-lg border-8 border-gray-100 mx-auto" style="background-color: ${$tu_cau_hoi_hien_tai.hex}"></div>`;
+                } else {
+                    $hinh_anh_html = `<div class="text-9xl drop-shadow-lg mx-auto transform hover:scale-110 transition-transform cursor-pointer" onclick="ham_phat_am_cau_hoi()">${$tu_cau_hoi_hien_tai.emoji}</div>`;
+                }
+
+                $vung_de_bai.innerHTML = `
+                    ${$hinh_anh_html}
+                    <p class="text-2xl font-bold text-gray-600 mt-6">Đây là gì nhỉ?</p>
+                    <button onclick="ham_phat_am_cau_hoi()" class="mt-4 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-bold text-sm">
+                        <i class="fa-solid fa-volume-high"></i> Nghe gợi ý
+                    </button>
+                `;
+
+                $cac_lua_chon.forEach($lua_chon => {
+                    $khung_dap_an.appendChild(ham_tao_nhao_nut_dap_an($lua_chon, 'chu'));
+                });
+            }
+
+            // Tự động đọc
+            setTimeout(ham_phat_am_cau_hoi, 500);
+        }
+
+        function ham_phat_am_cau_hoi() {
+            if ($tu_cau_hoi_hien_tai) {
+                ham_phat_am($tu_cau_hoi_hien_tai.wordEn, null);
+            }
+        }
+
+        function ham_kiem_tra_ket_qua($id_duoc_chon) {
+            const $vung_thong_bao = document.getElementById('vung_thong_bao');
+            $vung_thong_bao.classList.remove('hidden');
+            $vung_thong_bao.classList.remove('animate-bounce'); // Reset animation
+
+            if ($id_duoc_chon === $tu_cau_hoi_hien_tai.id) {
+                // Đúng
+                $diem_so += 10;
+                document.getElementById('diem_hien_tai').textContent = $diem_so;
+                $vung_thong_bao.innerHTML = '<span class="text-green-500 drop-shadow-sm"><i class="fa-solid fa-star text-yellow-400"></i> Giỏi quá! Chính xác rồi! <i class="fa-solid fa-star text-yellow-400"></i></span>';
+                $vung_thong_bao.classList.add('animate-bounce');
+
+                // Âm thanh vỗ tay (dùng speech tạo cảm giác vui nhộn)
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const $loi_chuc = new SpeechSynthesisUtterance("Excellent!");
+                    $loi_chuc.lang = 'en-US';
+                    $loi_chuc.pitch = 1.5;
+                    $loi_chuc.rate = 1.2;
+                    window.speechSynthesis.speak($loi_chuc);
+                }
+                
+                setTimeout(ham_tao_cau_hoi_moi, 2000); // Đợi 2s để bé kịp nhìn lời khen
+            } else {
+                // Sai
+                $vung_thong_bao.innerHTML = '<span class="text-red-500 drop-shadow-sm"><i class="fa-solid fa-face-frown-open"></i> Chưa đúng rồi, bé thử lại nhé!</span>';
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const $loi_dong_vien = new SpeechSynthesisUtterance("Oops! Try again.");
+                    $loi_dong_vien.lang = 'en-US';
+                    $loi_dong_vien.pitch = 1.2;
+                    window.speechSynthesis.speak($loi_dong_vien);
+                }
+            }
+        }
+
+        // --- KHỞI TẠO ỨNG DỤNG ---
+        window.onload = () => {
+            // Tạo dữ liệu tự động
+            ham_tao_danh_sach_so();
+            ham_tao_bang_chu_cai();
+
+            // Gộp mảng để chơi
+            $tat_ca_tu_vung = [
+                ...$du_lieu_tu_vung.animals, 
+                ...$du_lieu_tu_vung.fruits,
+                ...$du_lieu_tu_vung.colors,
+                ...$du_lieu_tu_vung.flags,
+                ...$du_lieu_tu_vung.alphabet,
+                ...$du_lieu_tu_vung.numbers
+            ];
+
+            // Render giao diện HTML
+            ham_hien_thi_giao_dien();
+            
+            // Chuyển tab về tab động vật mặc định
+            ham_chuyen_tab('animals');
+        };
+
+    </script>
+</body>
+</html>
